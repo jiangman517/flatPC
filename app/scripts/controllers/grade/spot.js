@@ -198,7 +198,7 @@ angular.module('flatpcApp')
 	    $scope.ableShow = false;
 	}
     $scope.checSjbMenu =function(){
-	    $scope.ableShow = false;
+	    $scope.ableShow = true;
 	}
     $scope.checkZdMenu =function(){
 	    $scope.ableShow = true;
