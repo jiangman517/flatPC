@@ -567,7 +567,7 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
         if($scope.switch.wgphoto && $scope.media.items!=''){
                 if(this.img){
                     if(this.img.length < 1){
-                        swal("提示","违章必拍请上传图片", "error"); 
+                        swal("提示","违规必拍请上传图片", "error"); 
                         return null;
                     }                    
                 }else{
