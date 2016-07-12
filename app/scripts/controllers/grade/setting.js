@@ -25,6 +25,7 @@ function($scope,AppConfig,$rootScope,GradeService) {
         wgphoto : AppConfig.wgphoto==1?false:true,
         check : AppConfig.check==1?false:true,
         role :  AppConfig.role==1?false:true,
+       
     };
     console.log(AppConfig);
     $scope.basicSave = function(){
@@ -39,7 +40,7 @@ function($scope,AppConfig,$rootScope,GradeService) {
             takephoto:$scope.media.takephoto?0:1,
             wgphoto:$scope.media.wgphoto?0:1,
             check:$scope.media.check?0:1,
-            role:$scope.media.role?0:1
+            role:$scope.media.role?0:1,
         }).success(function (data) {
             if(data.code == 0){
                 swal("提示","保存成功！", "success"); 
