@@ -12,7 +12,7 @@ angular.module('flatpcApp')
   function ($scope,$rootScope,GradeService,$filter,TermService,FlatService,RoleService,AppConfig) {
 
     $scope.form = {
-        display:1,
+        display:0,
         status:0,
         starttime:new Date().Format('yyyy-MM-dd'),
         endtime:new Date().Format('yyyy-MM-dd'),
@@ -101,6 +101,7 @@ angular.module('flatpcApp')
         $scope.form.title= item.title || '';
         $scope.form.itemaccount=item.itemAccount || '';
         $scope.form.nature=item.nature || '普通';
+        $scope.form.display=item.display || 0;
         $scope.form.starttime=item.startTime || new Date().Format('yyyy-MM-dd');
         $scope.form.endtime= item.endTime || new Date().Format('yyyy-MM-dd');
         $scope.form.checkid=item.checkId || '';
@@ -217,7 +218,7 @@ angular.module('flatpcApp')
 	    $scope.ableShow = false;
 	}
     $scope.checkZdMenu =function(){
-	    $scope.ableShow = true;
+	        $scope.ableShow = true;
 	}
     
 
@@ -240,6 +241,7 @@ angular.module('flatpcApp')
                 if(flatids.length < 0 || roleids.length < 0|| $scope.form.starttime.length < 0|| $scope.form.endtime.length < 0|| $scope.form.title.length < 0|| $scope.form.tableid.length < 0|| $scope.form.semesterid.length < 0)return;
                 $rootScope.loading = true;
                 GradeService.addSpot({
+                    display:$scope.form.display,
                     starttime:$scope.form.starttime,
                     endtime:$scope.form.endtime,
                     title:$scope.form.title,
@@ -263,12 +265,13 @@ angular.module('flatpcApp')
                         swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                 })
             })
-        }else if ($scope.form.display==2){
+        }else if ($scope.form.display==0){
             flatids = $scope.form.getFlat(),
             roleids = $scope.form.getRole();
             if(flatids.length < 0 || roleids.length < 0|| $scope.form.starttime.length < 0|| $scope.form.endtime.length < 0|| $scope.form.title.length < 0|| $scope.form.tableid.length < 0|| $scope.form.semesterid.length < 0)return;
             $rootScope.loading = true;
             GradeService.addSpot({
+                display:$scope.form.display,
                 starttime:$scope.form.starttime,
                 endtime:$scope.form.endtime,
                 title:$scope.form.title,
@@ -291,12 +294,13 @@ angular.module('flatpcApp')
                 else
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
             })
-        }else if($scope.form.display==0){
+        }else if($scope.form.display==2){
             flatids = "all",
             roleids = $scope.form.getRole();
             if(flatids.length < 0 || roleids.length < 0|| $scope.form.starttime.length < 0|| $scope.form.endtime.length < 0|| $scope.form.title.length < 0|| $scope.form.tableid.length < 0|| $scope.form.semesterid.length < 0)return;
             $rootScope.loading = true;
             GradeService.addSpot({
+                display:$scope.form.display,
                 starttime:$scope.form.starttime,
                 endtime:$scope.form.endtime,
                 title:$scope.form.title,
@@ -335,7 +339,8 @@ angular.module('flatpcApp')
             tableid:$scope.form.tableid,
             semesterid:$scope.form.semesterid,
             flatids:flatids,
-            roleids:roleids
+            roleids:roleids,
+            display:$scope.form.display
         }).success(function (data) {
             $rootScope.loading = false;
             if(data.code == 0){
