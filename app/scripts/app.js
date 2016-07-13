@@ -28,6 +28,7 @@ angular
     FRAME:'http://code.houqinbao.com:3338/Apartment/',
     REPORT:'http://test.houqinbao.com/Report/',
     SHOWER:'http://code.houqinbao.com:3338/Shower/',
+    UCENTER:'http://code.houqinbao.com:3338/ucenter',
       schoolCode:0,
 	  token:'',
       adminId:0,

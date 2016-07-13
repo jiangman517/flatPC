@@ -225,7 +225,6 @@ angular.module('flatpcApp')
 
         var flatids;
         var roleids;
-        alert($scope.form.display);
         var flatss = [];
         if($scope.form.display==1){
             GradeService.randomFlat({

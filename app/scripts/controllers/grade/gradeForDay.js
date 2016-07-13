@@ -565,6 +565,7 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
         },
         gradeSave:function (fun) {
         if($scope.switch.wgphoto && $scope.media.items!=''){
+            alert($scope.switch.wgphoto+":"+$scope.media.items);
                 if(this.img){
                     if(this.img.length < 1){
                         swal("提示","违规必拍请上传图片", "error"); 
@@ -578,8 +579,8 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                     });
                     return null;
                 }   
-            }
-            if($scope.switch.photo && $scope.switch.takephoto){
+            }else if($scope.switch.photo && $scope.switch.takephoto){
+                $scope.media.items=='';
                 if(this.img){
                     if(this.img.length < 1){
                         swal("提示","请上传图片", "error"); 
