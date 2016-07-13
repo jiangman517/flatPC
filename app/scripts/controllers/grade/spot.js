@@ -208,20 +208,6 @@ angular.module('flatpcApp')
             }
         }
     }
-    
-
-	$scope.ableShow = false;
-	$scope.checkQbMenu =function(){
-	    $scope.ableShow = false;
-	}
-    $scope.checSjbMenu =function(){
-	    $scope.ableShow = false;
-	}
-    $scope.checkZdMenu =function(){
-	        $scope.ableShow = true;
-	}
-    
-
     $scope.addSave = function (fun) {
 
         var flatids;

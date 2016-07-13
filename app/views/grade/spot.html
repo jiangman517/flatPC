@@ -157,19 +157,19 @@
                                         <div class="form-group"  >
                                         <label>
                                             
-                                        <input name="display" type="radio" value=2  ng-model="form.display"   required ng-click="checkQbMenu()">
+                                        <input name="display" type="radio" value=2  ng-model="form.display"   required >
                                             全部
                                         </label></br>
                                         <label>
-                                        <input name="display" type="radio" value=1 ng-model="form.display"  required  ng-click="checSjbMenu()">
+                                        <input name="display" type="radio" value=1 ng-model="form.display"  required  >
                                             随机生成
                                         </label></br>
                                         <label>
-                                        <input name="display" type="radio" value=0 ng-model="form.display" checked="checked" required ng-click="checkZdMenu()">
+                                        <input name="display" type="radio" value=0 ng-model="form.display" checked="checked" required >
                                             指定楼栋
                                         </label> 
                                         </div>
-                                        <ul ng-show="ableShow">    
+                                        <ul ng-if="form.display == 0">    
                                             <li style="padding:5px 0" ng-repeat="flat in form.flats">
                                                 <select class="form-control" ng-change="selecter.campusSelecter(flat)" ng-model="flat.campusId">
                                                     <option value="">选择校区</option>
