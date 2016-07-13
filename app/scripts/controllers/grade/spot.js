@@ -222,9 +222,9 @@ angular.module('flatpcApp')
                     flatss[i]=data.data[i].flatid;
                     
                 }
+                flatss = flatss.length>0?flatss.toString():"";
                 flatids=flatss;
                 roleids = $scope.form.getRole();
-                if(flatids.length < 0 || roleids.length < 0|| $scope.form.starttime.length < 0|| $scope.form.endtime.length < 0|| $scope.form.title.length < 0|| $scope.form.tableid.length < 0|| $scope.form.semesterid.length < 0)return;
                 $rootScope.loading = true;
                 GradeService.addSpot({
                     display:$scope.form.display,
