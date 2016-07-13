@@ -9,11 +9,13 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
         pass : AppConfig.pass==1?false:true,
         photo : AppConfig.photo==1?false:true,
         takephoto : AppConfig.takephoto==1?false:true,
+        wgphoto : AppConfig.wgphoto==1?false:true,
         check : AppConfig.check==1?false:true,
         role :  AppConfig.role==1?false:true,
     }
     $scope.media = {
         source:2,
+        items:'',
         tab:1,
         setTab:function(n) {
             this.tab = n;
@@ -575,18 +577,35 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                 itemId:item.itemId,
                 itemName:item.title
             })
+             $scope.media.items=list;
         },
         removeRule:function (list,index) {
             if($scope.media.tab <2)
             list.splice(index,1);
         },
-        gradeSave:function (fun) {
-            if($scope.switch.photo && $scope.switch.takephoto){
+    gradeSave:function (fun) {
+        if($scope.switch.wgphoto &&  $scope.media.items.length>0){
+                if(this.img){
+                    if(this.img.length < 1){
+                        swal("提示","违规必拍请上传图片", "error"); 
+                        return null;
+                    }                    
+                }else{
+                    //swal("提示","你还没有上传寝室实拍", "error"); 
+                    var that = this;
+                    this.getData(3,function () {
+                        that.gradeSaves(fun);
+                    });
+                    return null;
+                }   
+            }else if($scope.switch.photo && $scope.switch.takephoto){
+                $scope.media.items=='';
                 if(this.img){
                     if(this.img.length < 1){
                         swal("提示","请上传图片", "error"); 
                         return null;
                     }
+                    
                 }else{
                     //swal("提示","你还没有上传寝室实拍", "error"); 
                     var that = this;

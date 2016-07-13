@@ -553,19 +553,19 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
             for(var i=0;i <list.length;i++){
                 if(list[i].itemId == item.itemId)return;
             }
-            $scope.media.items=item.itemId;
+            
             list.push({
                 itemId:item.itemId,
                 itemName:item.title
             })
+            $scope.media.items=list;
         },
         removeRule:function (list,index) {
             if($scope.media.tab <2)
                 list.splice(index,1);
         },
         gradeSave:function (fun) {
-        if($scope.switch.wgphoto && $scope.media.items!=''){
-            alert($scope.switch.wgphoto+":"+$scope.media.items);
+        if($scope.switch.wgphoto && $scope.media.items.length>0){
                 if(this.img){
                     if(this.img.length < 1){
                         swal("提示","违规必拍请上传图片", "error"); 
@@ -579,8 +579,8 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                     });
                     return null;
                 }   
-            }else if($scope.switch.photo && $scope.switch.takephoto){
-                $scope.media.items=='';
+            }
+            if($scope.switch.photo && $scope.switch.takephoto){
                 if(this.img){
                     if(this.img.length < 1){
                         swal("提示","请上传图片", "error"); 
