@@ -581,6 +581,8 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                 }   
             }else if($scope.switch.photo && $scope.switch.takephoto){
                 $scope.media.items=='';
+
+
                 if(this.img){
                     if(this.img.length < 1){
                         swal("提示","请上传图片", "error"); 
@@ -603,25 +605,6 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
             else if(this.img)this.gradeImg(fun);
             else if(this.rule)this.ruleSave(fun);
         },
-
-        // gradeSave:function (fun,type) {
-        //     if($scope.switch.photo && $scope.switch.wgphoto){
-        //         if(this.img){
-        //             if(this.img.length < 1){
-        //                 swal("提示","请上传图片", "error"); 
-        //                 return null;
-        //             }                    
-        //         }else{
-        //             //swal("提示","你还没有上传寝室实拍", "error"); 
-        //             var that = this;
-        //             this.getData(3,function () {
-        //                 that.gradeSaves(fun);
-        //             });
-        //             return null;
-        //         }   
-        //     }
-
-        // },
 
         roomGrade:function(fun){
             var grades = "[",that = this;

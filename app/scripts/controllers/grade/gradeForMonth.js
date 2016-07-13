@@ -581,12 +581,31 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
             list.splice(index,1);
         },
         gradeSave:function (fun) {
-            if($scope.switch.photo && $scope.switch.takephoto){
+        if($scope.switch.wgphoto && $scope.media.items!=''){
+            alert($scope.switch.wgphoto+":"+$scope.media.items);
+                if(this.img){
+                    if(this.img.length < 1){
+                        swal("提示","违规必拍请上传图片", "error"); 
+                        return null;
+                    }                    
+                }else{
+                    //swal("提示","你还没有上传寝室实拍", "error"); 
+                    var that = this;
+                    this.getData(3,function () {
+                        that.gradeSaves(fun);
+                    });
+                    return null;
+                }   
+            }else if($scope.switch.photo && $scope.switch.takephoto){
+                $scope.media.items=='';
+
+
                 if(this.img){
                     if(this.img.length < 1){
                         swal("提示","请上传图片", "error"); 
                         return null;
                     }
+                    
                 }else{
                     //swal("提示","你还没有上传寝室实拍", "error"); 
                     var that = this;
