@@ -583,7 +583,7 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
             if($scope.media.tab <2)
             list.splice(index,1);
         },
-    gradeSave:function (fun) {
+        gradeSave:function (fun) {
         if($scope.switch.wgphoto &&  $scope.media.items.length>0){
                 if(this.img){
                     if(this.img.length < 1){

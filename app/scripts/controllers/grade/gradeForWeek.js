@@ -619,6 +619,7 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
             else if(this.img)this.gradeImg(fun);
             else if(this.rule)this.ruleSave(fun);
         },
+        
         roomGrade:function(fun){
             var grades = "[",that = this;
             // //console.log(this.room);

@@ -65,6 +65,7 @@ input:disabled, textarea:disabled {
     bottom:0;
     background-color: #f6f7f8;
     z-index: 3;
+    overflow: auto;
 }
 .page-frame{
     position: fixed;
