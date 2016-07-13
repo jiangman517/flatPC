@@ -155,20 +155,19 @@
                                     <td class="require">抽查范围</td>
                                     <td>
                                         <div class="form-group">
-                                        <label class="radio">
-                                        <input name="display" type="radio" value="" ng-model="institution.display" ng-checked="true" required ng-click="checkQbMenu()">
+                                        <label>
+                                        <input name="display" type="radio" value="0" ng-model="form.display" ng-checked="true" required ng-click="checkQbMenu()">
                                             全部
-                                        </label>
-                                        <label class="radio">
-                                        <input name="display" type="radio" value="" ng-model="institution.display"  required  ng-click="checSjbMenu()">
+                                        </label></br>
+                                        <label>
+                                        <input name="display" type="radio" value="1" ng-model="form.display"  required  ng-click="checSjbMenu()">
                                             随机生成
-                                        </label>
-                                        <label class="radio">
-                                        <input name="display" type="radio" value="" ng-model="institution.display" required ng-click="checkZdMenu()">
+                                        </label></br>
+                                        <label>
+                                        <input name="display" type="radio" value="2"  ng-model="form.display" required ng-click="checkZdMenu()">
                                             指定楼栋
                                         </label> 
                                         </div>
-                                        
                                         <ul ng-show="ableShow">    
                                             <li style="padding:5px 0" ng-repeat="flat in form.flats">
                                                 <select class="form-control" ng-change="selecter.campusSelecter(flat)" ng-model="flat.campusId">

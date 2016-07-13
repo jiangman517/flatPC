@@ -745,6 +745,14 @@ angular.module('flatpcApp')
             swal("提示", "网络错误！", "error"); 
         });
     };
+    //随机获取楼栋信息
+    var randomFlat =function() {
+        var url = AppConfig.WEB_ROOT + 'flatdata/school/random_flat/?'
+         + 'schoolcode=' + AppConfig.schoolCode + '&token=' + AppConfig.token;
+        return $http.get(url).error(function (error) {
+            swal("提示", "网络错误！", "error"); 
+        });
+    };
     return {
         getListByFlat:getListByFlat,
         setGrade:setGrade,
@@ -776,6 +784,7 @@ angular.module('flatpcApp')
         editSpot:editSpot,
         delSpot:delSpot,
         getFlatByCheckId:getFlatByCheckId,
-        dayCompletion:dayCompletion
+        dayCompletion:dayCompletion,
+        randomFlat:randomFlat
     }
 }]);

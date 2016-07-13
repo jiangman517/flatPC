@@ -10,7 +10,9 @@
 angular.module('flatpcApp')
   .controller('SpotCtrl', ['$scope','$rootScope','GradeService','$filter','TermService','FlatService','RoleService','AppConfig',
   function ($scope,$rootScope,GradeService,$filter,TermService,FlatService,RoleService,AppConfig) {
+
     $scope.form = {
+        display:1,
         status:0,
         starttime:new Date().Format('yyyy-MM-dd'),
         endtime:new Date().Format('yyyy-MM-dd'),
@@ -54,6 +56,19 @@ angular.module('flatpcApp')
             ids = ids.length>0?ids.toString():"";
             return ids;
         },
+
+         getrandomgflat:function(){
+                var flatss=[];
+                GradeService.randomFlat({
+                    token:AppConfig.token,
+                    schoolcode:AppConfig.schoolCode
+                }).success(function(data){
+                     for(var i=0;i<data.data.length;i++){
+                         flatss[i]=data.data[i].flatid;
+                     }
+                });
+             return flatss;
+        },
         getRole:function(){
             var ids = [];
             $scope.roles.forEach(function (role) {
@@ -63,6 +78,7 @@ angular.module('flatpcApp')
             ids = ids.length>0?ids.toString():"";
             return ids;
         },
+       
         timeCheck:function (n) {
             if(new Date(this.starttime) > new Date(this.endtime)){
                 try{
@@ -198,40 +214,113 @@ angular.module('flatpcApp')
 	    $scope.ableShow = false;
 	}
     $scope.checSjbMenu =function(){
-	    $scope.ableShow = true;
+	    $scope.ableShow = false;
 	}
     $scope.checkZdMenu =function(){
 	    $scope.ableShow = true;
 	}
-
     
+
     $scope.addSave = function (fun) {
-        var flatids = $scope.form.getFlat(),roleids = $scope.form.getRole();
-        if(flatids.length < 0 || roleids.length < 0|| $scope.form.starttime.length < 0|| $scope.form.endtime.length < 0|| $scope.form.title.length < 0|| $scope.form.tableid.length < 0|| $scope.form.semesterid.length < 0)return;
-        $rootScope.loading = true;
-        GradeService.addSpot({
-            starttime:$scope.form.starttime,
-            endtime:$scope.form.endtime,
-            title:$scope.form.title,
-            nature:$scope.form.nature,
-            keyword:$scope.form.keyword || "test",
-            tableid:$scope.form.tableid,
-            semesterid:$scope.form.semesterid,
-            flatids:flatids,
-            roleids:roleids
-        }).success(function (data) {
-            $rootScope.loading = false;
-            if(data.code == 0){
-                swal("提示", "添加成功！", "success"); 
-                refresh();
-                if(fun && typeof fun == 'function') fun();
-            }else if(data.code == 4037){
-                            swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
-                            location.href="#login";$rootScope.loading = false;
-                        }
-            else
-                swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
-        })
+
+        var flatids;
+        var roleids;
+        alert($scope.form.display);
+        var flatss = [];
+        if($scope.form.display==1){
+            GradeService.randomFlat({
+                token:AppConfig.token,
+                schoolcode:AppConfig.schoolCode
+            }).success(function(data){
+                for(var i=0;i<data.data.length;i++){
+                    flatss[i]=data.data[i].flatid;
+                    
+                }
+                flatids=flatss;
+                roleids = $scope.form.getRole();
+                if(flatids.length < 0 || roleids.length < 0|| $scope.form.starttime.length < 0|| $scope.form.endtime.length < 0|| $scope.form.title.length < 0|| $scope.form.tableid.length < 0|| $scope.form.semesterid.length < 0)return;
+                $rootScope.loading = true;
+                GradeService.addSpot({
+                    starttime:$scope.form.starttime,
+                    endtime:$scope.form.endtime,
+                    title:$scope.form.title,
+                    nature:$scope.form.nature,
+                    keyword:$scope.form.keyword || "test",
+                    tableid:$scope.form.tableid,
+                    semesterid:$scope.form.semesterid,
+                    flatids:flatids,
+                    roleids:roleids
+                }).success(function (data) {
+                    $rootScope.loading = false;
+                    if(data.code == 0){
+                        swal("提示", "添加成功！", "success"); 
+                        refresh();
+                        if(fun && typeof fun == 'function') fun();
+                    }else if(data.code == 4037){
+                                    swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+                                    location.href="#login";$rootScope.loading = false;
+                                }
+                    else
+                        swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+                })
+            })
+        }else if ($scope.form.display==2){
+            flatids = $scope.form.getFlat(),
+            roleids = $scope.form.getRole();
+            if(flatids.length < 0 || roleids.length < 0|| $scope.form.starttime.length < 0|| $scope.form.endtime.length < 0|| $scope.form.title.length < 0|| $scope.form.tableid.length < 0|| $scope.form.semesterid.length < 0)return;
+            $rootScope.loading = true;
+            GradeService.addSpot({
+                starttime:$scope.form.starttime,
+                endtime:$scope.form.endtime,
+                title:$scope.form.title,
+                nature:$scope.form.nature,
+                keyword:$scope.form.keyword || "test",
+                tableid:$scope.form.tableid,
+                semesterid:$scope.form.semesterid,
+                flatids:flatids,
+                roleids:roleids
+            }).success(function (data) {
+                $rootScope.loading = false;
+                if(data.code == 0){
+                    swal("提示", "添加成功！", "success"); 
+                    refresh();
+                    if(fun && typeof fun == 'function') fun();
+                }else if(data.code == 4037){
+                                swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+                                location.href="#login";$rootScope.loading = false;
+                            }
+                else
+                    swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+            })
+        }else if($scope.form.display==0){
+            flatids = "all",
+            roleids = $scope.form.getRole();
+            if(flatids.length < 0 || roleids.length < 0|| $scope.form.starttime.length < 0|| $scope.form.endtime.length < 0|| $scope.form.title.length < 0|| $scope.form.tableid.length < 0|| $scope.form.semesterid.length < 0)return;
+            $rootScope.loading = true;
+            GradeService.addSpot({
+                starttime:$scope.form.starttime,
+                endtime:$scope.form.endtime,
+                title:$scope.form.title,
+                nature:$scope.form.nature,
+                keyword:$scope.form.keyword || "test",
+                tableid:$scope.form.tableid,
+                semesterid:$scope.form.semesterid,
+                flatids:flatids,
+                roleids:roleids
+            }).success(function (data) {
+                $rootScope.loading = false;
+                if(data.code == 0){
+                    swal("提示", "添加成功！", "success"); 
+                    refresh();
+                    if(fun && typeof fun == 'function') fun();
+                }else if(data.code == 4037){
+                                swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+                                location.href="#login";$rootScope.loading = false;
+                            }
+                else
+                    swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+            })
+        }
     }
     $scope.editSave = function (fun) {
         var flatids = $scope.form.getFlat(),roleids = $scope.form.getRole();
@@ -423,4 +512,6 @@ angular.module('flatpcApp')
             $rootScope.loading = false;
         })
     }
+    //随机获取楼栋信息
+    
   }]);
