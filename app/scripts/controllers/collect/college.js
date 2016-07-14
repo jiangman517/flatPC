@@ -19,6 +19,7 @@ angular.module('flatpcApp')
         degree:'',
         degreeYear:'',
         classId:'',
+        shortname:'',
         history:0,
         menuCheck : function () {
             switch (this.type){
@@ -78,7 +79,8 @@ angular.module('flatpcApp')
                     token:AppConfig.token,
                     schoolcode:AppConfig.schoolCode,
                     listorder:$scope.media.listOrder,
-                    title:$scope.media.collegeName
+                    title:$scope.media.collegeName,
+                    shortname:$scope.media.shortname
                 })
             }else if($scope.media.type == 2){
                 return CollegeService.addClass({
@@ -115,7 +117,8 @@ angular.module('flatpcApp')
                     token:AppConfig.token,
                     collegeid:$scope.media.collegeId,
                     listorder:$scope.media.listOrder,
-                    title:$scope.media.collegeName
+                    title:$scope.media.collegeName,
+                    shortname:$scope.media.shortname
                 }).success(function(){
                     $rootScope.loading = false;
                 })
