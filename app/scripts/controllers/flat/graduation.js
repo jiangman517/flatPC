@@ -208,14 +208,6 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
         }
         $scope.media.multi = status;
     }
-    // $scope.multiPass = function () {
-    //     var radis =[];
-    //     var radios=document.getElementsByName("check");
-    //     for(var a=0;a<radios.length;a++){
-    //        if(radios[a].checked==true)
-	// 			radis.push(radios[a].value);	
-    //     }
-    // }
     $scope.warning = function () {
         swal("提示","本功能正在开发中，敬请期待", "error");
     }
@@ -234,9 +226,6 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
             +'&campusid='+$scope.media.campusid+'&areaname='+$scope.media.liveareaid+'&flatid='+$scope.media.flatid;
            a.click();
            }
-        // alert($scope.media.status);
-        // alert($scope.media.collegeid);
-        // alert($scope.media.classid);
     }
      //批量审批
     $scope.multiPass = function(){

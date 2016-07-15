@@ -133,13 +133,6 @@
                         <a ng-click="multiPass()" class="btn btn-stroke btn-success">批量审批</a>
                     </td>
                 </tr>
-
-                <tr ng-show="media.status==-1 || media.status==2">
-                    <td class="multi-deal-box" colspan="9">
-                        <a ng-click="passWork(multiPass())" class="btn btn-stroke btn-success">批量审批</a>
-                    </td>
-                </tr>
-
             </tfoot>
           
         </table>
@@ -251,7 +244,7 @@
                                             <button disabled class="btn btn-addon btn-default"><i class="glyphicon glyphicon-ok"></i>审批</button>
                                         </div>
                                         <div ng-if="work.status==2&&menuCheck(350)">
-                                            <a class="btn btn-addon btn-success" ng-click="passWork(closeCard('#setCheck'))"><i class="glyphicon glyphicon-ok"></i>审批111</a>
+                                            <a class="btn btn-addon btn-success" ng-click="passWork(closeCard('#setCheck'))"><i class="glyphicon glyphicon-ok"></i>审批</a>
                                         </div>
                                         <div ng-if="work.status==1">
                                             <button disabled class="btn btn-addon btn-default" ng-click="warning()"><i class="glyphicon glyphicon-bell"></i>催缴</button>
