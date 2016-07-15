@@ -120,7 +120,7 @@
                     <td>
                         <button type="button" class="btn btn-link btn-xs" ng-click="showCard('#setCheck',detail(item))">查看</button>
                     </td>                    
-                    <td><input type="checkbox" ng-change="multiChecked(item.checked)" value="{{item.exitId}}" ng-disabled="item.status!=2" ng-model="item.checked" /></td>
+                    <td><input type="checkbox" name="check" ng-change="multiChecked(item.checked)" value="{{item.exitId}}" ng-disabled="item.status!=2" ng-model="item.checked" /></td>
 
                 </tr>
             </tbody>
@@ -128,9 +128,9 @@
                 <tr>
                     <td colspan="10" ng-hide="media.recordCount" class="empty">没有检索到相关退宿记录</td>
                 </tr>
-                <tr ng-show="media.recordCount&&multiPass()">
+                <tr ng-show="media.recordCount">
                     <td class="multi-deal-box" colspan="9">
-                        <a ng-click="passWork(multiPass())" class="btn btn-stroke btn-success">批量审批</a>
+                        <a ng-click="multiPass()" class="btn btn-stroke btn-success">批量审批</a>
                     </td>
                 </tr>
 
@@ -141,9 +141,11 @@
                 </tr>
 
             </tfoot>
+          
         </table>
         
     </div>
+    
     <div class="page-controller" style="left:225px;">
         <div class="page-number">
             <ul class="pagination">
@@ -163,6 +165,7 @@
                     </a>
                 </li>
             </ul>
+              
         </div>
         <div class="page-size">
             共{{media.recordCount}}条记录，每页显示

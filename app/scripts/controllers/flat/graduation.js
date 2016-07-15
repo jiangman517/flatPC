@@ -7,7 +7,7 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
     $scope.media = {
         epage:1,
         pageCount:1,
-        recordCount:0,
+        recordCount:'',
         pagesize:10,
         name:'',
         studentnumber:'',
@@ -208,19 +208,14 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
         }
         $scope.media.multi = status;
     }
-    $scope.multiPass = function () {
-        var ids = "",n = 0;
-        $scope.list.forEach(function (item) {
-            if(!item.status && item.checked){
-                ids+= (item.exitId) +","; 
-                n++;
-            }
-        });
-        if(n>0){
-            return ids.substring(0,ids.length - 1);
-        }else
-            return null;
-    }
+    // $scope.multiPass = function () {
+    //     var radis =[];
+    //     var radios=document.getElementsByName("check");
+    //     for(var a=0;a<radios.length;a++){
+    //        if(radios[a].checked==true)
+	// 			radis.push(radios[a].value);	
+    //     }
+    // }
     $scope.warning = function () {
         swal("提示","本功能正在开发中，敬请期待", "error");
     }
@@ -243,8 +238,53 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
         // alert($scope.media.collegeid);
         // alert($scope.media.classid);
     }
+     //批量审批
+    $scope.multiPass = function(){
+        var radis =[];
+        var radios=document.getElementsByName("check");
+        for(var a=0;a<radios.length;a++){
+           if(radios[a].checked==true)
+				radis.push(radios[a].value);	
+        }
+         radis = radis.length>0?radis.toString():"";
+        if(radis.length==0){
+            swal("提示","没有选中的数据", "error")
+        }else if(radis.length!=0){
+        swal({   
+            title: "确认",   
+            text: "确定要审批这些申请吗？",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#2772ee",   
+            confirmButtonText: "确定",   
+            cancelButtonText: "取消",   
+            closeOnConfirm: false 
+        }, 
+        function(){   
+            $rootScope.loading = true;
+            GraduationService.check({
+                exitids:radis || '',
+                adminid:AppConfig.adminId
+            }).success(function(data){
+                if(data.code == 0){
+                    swal("提示", "审批成功！", "success"); 
+                    refresh();
+                    if(fun && typeof fun == 'function')fun();
+                }else if(data.code == 4037){
+                    swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+                    location.href="#login";$rootScope.loading = false;
+                }else
+                    swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+                
+                $rootScope.loading = false;
+            });
+        });
+    }
+        
+    }
     //审批
     $scope.passWork = function(fun){
+        
         if(fun && typeof fun == 'string')$scope.work.exitId=fun;
         swal({   
             title: "确认",   
@@ -269,8 +309,7 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
                 }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
-                }
-                else
+                }else
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                 
                 $rootScope.loading = false;
