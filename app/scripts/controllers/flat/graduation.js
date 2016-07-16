@@ -307,88 +307,16 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
         
     }
     
-    //二级连选的select
-    $scope.selecter = {
-        collegeId:"",
-        classList:[],
-        classId:'',
-        grade:'',
-        collegeList:[],
-        listClass:[],
-        collegeSelecter : function(n){
-            //用collegeId获取classList
-            if(n){
-                this.classId = '';
-                var college = $filter('filter')(this.collegeList,{collegId:this.collegeId});
-                this.listClass = (college.length>0 && college[0].listClass)?college[0].listClass : [];
-                this.collegeName = (college.length>0 && college[0].collegeName)?college[0].collegeName : "";
-            }
-            else if(this.collegeId){
-                this.classId = '';
-                var college = this.collegeId?$filter('filter')($rootScope.treeCollege[0].collegeList,{collegeId:this.collegeId}):[];
-                this.classList = (college.length>0 && college[0].classList)?college[0].classList : [];
-            }
-        },
-        classSelecter : function(){
-            //用classId反向获取collegeId和classList
-            var college = $rootScope.treeCollege[0].collegeList;
-            for(var i=0;i<college.length;i++){
-                var list = this.classId?$filter('filter')(college[i].classList,{classId:this.classId}):[];
-                if(list.length > 0){
-                    this.collegeId = college[i].collegeId;
-                    this.classList = college[i].classList;
-                    break;
-                }
-            }
-        },
-        gradeSelecter:function () {
-            //用grade获取collegeList
-            if(this.grade){
-                this.classId = '';
-                this.collegeId = '';
-                this.listClass = [];
-                var colleges = $filter('filter')($scope.college,{grade:this.grade});
-                this.collegeList = (colleges.length>0 && colleges[0].listColleg)?colleges[0].listColleg : [];
-            }
-        },
-        
-        init : function(){
-            //将select置空
-            this.collegeId = "";
-            this.classId = "";
-            this.classList = [];
-            this.listClass = [];
-            this.collegeList = [];
-            this.grade = "";
-        }
-    }
     $scope.dataInit = function(){
         $scope.selecter.init();
         $scope.form.classList = [];
         $scope.form.student = null;
         $scope.form.studentName = '';
         $scope.form.studentList = null;
+        $scope.form.collegeClassList = null;
     }
     $scope.form = {
         classList:[],
-        addClass:function (cla) {
-            if(cla.check){
-                cla.collegeName = $scope.selecter.collegeName;
-                cla.grade = $scope.selecter.grade;
-                this.classList.push(cla);
-            }else{
-                this.delClass(cla);
-            }
-            
-        },
-        delClass:function (cla) {
-            for(var i=0;i <this.classList.length;i++){
-                if(this.classList[i].classId == cla.classId){
-                    cla.check = false;
-                    this.classList.splice(i,1);
-                }
-            }
-        },
         student:null,
         studentName:'',
         studentList:null,
@@ -412,6 +340,49 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
                 }
                 else
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+            })
+        },
+        year: null,
+        selectYear: null,
+        collegeClassList: null,
+        initSelectYearsData: function(){
+            this.year = new Date().getFullYear();
+            this.selectYear = [];
+            for(var i=this.year-5; i<=this.year+5; i++){
+                this.selectYear[this.selectYear.length] = {
+                    id: i,
+                    text: i+'年'
+                }
+            }
+        },
+        collegeClassSearch:function () {
+            var that = this;
+            $rootScope.loading = true;
+            StudentService.getCollegeclassByYear({
+                schoolCode:AppConfig.schoolCode,
+                year:this.year
+            }).success(function (result) {
+                //console.log(data);
+                $rootScope.loading = false;
+                if(result.code == 0){
+                    that.collegeClassList = result.data;
+                    angular.forEach(result.data, function(data,index,array){
+                        angular.forEach(data.listClass, function(data_class,index_class,array_class){
+                            that.classList[that.classList.length] ={
+                                classId: data_class.classId,
+                                className: data_class.className,
+                                collegeName: data_class.collegeName,
+                                Grades: data.Grades,
+                                degreeYears: data.degreeYears
+                            }
+                        }); 
+                    });
+                }else if(result.code == 4037){
+                    swal("提示","错误代码："+ result.code + '，' + result.msg, "error"); 
+                    location.href="#login";$rootScope.loading = false;
+                }
+                else
+                    swal("提示","错误代码："+ result.code + '，' + result.msg, "error"); 
             })
         },
         studentChoose:function (student) {
@@ -469,4 +440,7 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
             })
         }
     }
+
+    //批量退宿舍时，初始化“请选择毕业年”范围
+    $scope.form.initSelectYearsData();
 }]);

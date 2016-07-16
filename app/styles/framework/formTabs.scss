@@ -67,6 +67,7 @@
             }
         }
         .form-tabs-tool-bar{
+            position: relative;
             border-top:1px solid #dfe0e0;
             display: box;
             display: -webkit-box;
@@ -81,8 +82,23 @@
             -webkit-align-items:center;
             padding-left: 10px;
             &>div{
-                padding-right: 10px;  
+                padding-right: 20px;  
             }
+            .batch-tool-bar{
+                padding-left:100px;   
+                span{
+                    position: absolute;
+                    left:16px;
+                    top:15px;
+                    color:#333;
+                    }
+            }
+            .btn-batch{
+                position: absolute;
+                right:16px;
+                top:8px;    
+            }
+
             .form-tabs-full{
                 -webkit-box-flex:1;
                 box-flex:1;

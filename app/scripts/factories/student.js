@@ -157,6 +157,14 @@ angular.module('flatpcApp')
             swal("提示", "网络错误！", "error"); 
         });
     }
+    var getCollegeclassByYear = function (param) {
+        var url = AppConfig.WEB_ROOT + 'stmessage/collegeclass/yearbycollegeandclass/?'
+        + 'year='+ (param.year || "")
+        +'&schoolcode='+(param.schoolCode || "");
+        return $http.get(url).error(function (error) {
+            swal("提示", "网络错误！", "error"); 
+        });
+    }
     return {
         getStudent:getStudent,//获取学生详细信息
         getList:getList,//获取学生列表
@@ -172,6 +180,7 @@ angular.module('flatpcApp')
         getListWithBed:getListWithBed,
         getListWithBedByFlat:getListWithBedByFlat,
         downloadOriginal:downloadOriginal,
-        getListWithBedByClass:getListWithBedByClass
+        getListWithBedByClass:getListWithBedByClass,
+        getCollegeclassByYear:getCollegeclassByYear
     }
 }]);
