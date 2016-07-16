@@ -125,17 +125,16 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
                     roomstyle:$scope.media.floor.floortype,
                     startfloor:$scope.media.floor.startfloor
                 };
-                if($scope.media.floor.floortype != $scope.sex && "混住" !=$scope.sex){
-                     param=null;
-                }
                 RoomService.multiAdd(param).success(function(data){
                     $rootScope.loading = false;
-                    if(data.code == 0){
+                    if($scope.media.flatid==null){
+                         swal("提示","请添加楼栋信息","error");
+                    }else if($scope.media.floor.floortype != $scope.sex && "混住" !=$scope.sex){
+                     swal("提示","与当前楼栋性别不符合","error"); 
+                    }else if(data.code == 0){
                         swal("提示", "添加成功！", "success");
                         if(fun && typeof fun == 'function') fun();
                          refresh($scope.media.flatid);
-                    }else if(param==null){
-                     swal("提示","与当前楼栋性别不符合","error"); 
                     }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
@@ -157,17 +156,16 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
                 floorname:$scope.media.floor.floorname,
                 memo:$scope.media.floor.memo
             };
-             if($scope.media.floor.floortype != $scope.sex && "混住" !=$scope.sex){
-               param=null;
-            }
             RoomService.editFloor(param).success(function(data){
                 $rootScope.loading = false;
-                if(data.code == 0){
+                if($scope.media.flatid==null){
+                         swal("提示","请添加楼栋信息","error");
+                }else if($scope.media.floor.floortype != $scope.sex && "混住" !=$scope.sex){
+                     swal("提示","与当前楼栋性别不符合","error"); 
+                }else if(data.code == 0){
                     swal("提示", "修改成功！", "success");
                     if(fun && typeof fun == 'function') fun();
                          refresh($scope.media.flatid);
-                }else if(param==null){
-                     swal("提示","与当前楼栋性别不符合","error"); 
                 }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
@@ -262,19 +260,17 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
             }
            
             $rootScope.loading = true;
-          
-            if($scope.media.room.roomstyle != $scope.sex && "混住" !=$scope.sex){
-               param=null;
-            }
             RoomService.addRoom(param).success(function(data){
                 $rootScope.loading = false;
                 
-                if(data.code == 0){
+                if($scope.media.flatid==null){
+                         swal("提示","请添加楼栋信息","error");
+                }else if($scope.media.room.roomstyle != $scope.sex && "混住" !=$scope.sex){
+                     swal("提示","与当前楼栋性别不符合","error"); 
+                }else if(data.code == 0){
                     swal("提示", "添加成功！", "success");
                     if(fun && typeof fun == 'function') fun();
                          refresh($scope.media.flatid);
-                }else if(param==null){
-                     swal("提示","与当前楼栋性别不符合","error"); 
                 }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
@@ -302,17 +298,16 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
                 else return;
             }
             $rootScope.loading = true;
-            if($scope.media.room.roomstyle != $scope.sex && "混住" !=$scope.sex){
-               param=null;
-            }
             RoomService.editRoom(param).success(function(data){
                 $rootScope.loading = false;
-                if(data.code == 0){
+                if($scope.media.flatid==null){
+                         swal("提示","请添加楼栋信息","error");
+                }else if($scope.media.room.roomstyle != $scope.sex && "混住" !=$scope.sex){
+                     swal("提示","与当前楼栋性别不符合","error"); 
+                }else if(data.code == 0){
                     swal("提示", "修改成功！", "success"); 
                     if(fun && typeof fun == 'function') fun();
                          refresh($scope.media.flatid);
-                }else if(param==null){
-                     swal("提示","与当前楼栋性别不符合","error"); 
                 }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
