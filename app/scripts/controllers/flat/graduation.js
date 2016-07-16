@@ -307,8 +307,8 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
         
     }
     
+
     $scope.dataInit = function(){
-        $scope.selecter.init();
         $scope.form.classList = [];
         $scope.form.student = null;
         $scope.form.studentName = '';
