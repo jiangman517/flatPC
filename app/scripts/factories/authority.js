@@ -399,6 +399,26 @@ angular.module('flatpcApp')
                      return ['flat','flat','newstudentIn'];
                 else
                     return null;
+             case 'zhufenbu':
+                if(menuCheck(411))
+                     return ['flat','flat','zhufenbu'];
+                else
+                    return null;
+             case 'biandong':
+                if(menuCheck(412))
+                     return ['flat','flat','biandong'];
+                else
+                    return null;
+             case 'dormrefer':
+                if(menuCheck(413))
+                     return ['report','report','dormrefer'];
+                else
+                    return null;
+             case 'dormdist':
+                if(menuCheck(414))
+                     return ['report','report','dormdist'];
+                else
+                    return null;
             
                    
                     

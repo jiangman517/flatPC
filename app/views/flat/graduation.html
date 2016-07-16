@@ -118,7 +118,7 @@
                         {{item.status==0||item.status==1?(item.listRoom.length>0?(media.getSum(item.listRoom)==0?"待评估":media.getSum(item.listRoom)):(item.status==0?"暂无，请导入":"无违欠信息")):"无违欠信息"}}
                     </td>
                     <td>
-                        <button type="button" class="btn btn-link btn-xs" ng-click="showCard('#setCheck',detail(item))">查看</button>
+                        <button type="button" class="btn btn-link btn-xs" ng-click="showCard('#setCheck',detail(item))">详情</button>
                     </td>                    
                     <td><input type="checkbox" name="check" ng-change="multiChecked(item.checked)" value="{{item.exitId}}" ng-disabled="item.status!=2" ng-model="item.checked" /></td>
 
@@ -205,7 +205,7 @@
                                             <td class="itemBox">
                                                 <ul>
                                                     <li class="item" ng-repeat="item in work.listBed">
-                                                        {{item.nature}}
+                                                      {{work.status}} {{item.nature}}
                                                     </li>
                                                     <li ng-show="work.listBed.length<1">
                                                         {{work.status?"无违欠信息":'暂无，请导入'}}
