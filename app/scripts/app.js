@@ -22,7 +22,7 @@ angular
     //   
       WEB_ROOT:'http://120.55.84.193/Geese_Apartment/',
         // WEB_ROOT:'http://114.55.17.193/Geese_Apartment/',
-    // WEB_ROOT:'http://192.168.2.138:8080/Geese_Apartment/',
+    // WEB_ROOT:'http://127.0.0.1:8080/Geese_Apartment/',
     //   WEB_ROOT:'http://ap.houqinbao.com/Geese_Apartment/',
     WEB_ROOT_MESSAGE:'http://120.55.84.193/Geese_Quality_Supervision/',
     FRAME:'http://code.houqinbao.com:3338/Apartment/',
@@ -1272,6 +1272,74 @@ angular
             "": {
                 templateUrl: 'views/grade/newStudentIn.html',
                 controller: 'newstudentInCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('zhufenbu', {
+        url: "/zhufenbu",
+        views: {
+            "": {
+                templateUrl: 'views/flatManager/zhufenbu.html',
+                controller: 'pandectdistributeCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('biandong', {
+        url: "/biandong",
+        views: {
+            "": {
+                templateUrl: 'views/flat/biandong.html',
+                controller: 'staffvariationCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('dormrefer', {
+        url: "/dormrefer",
+        views: {
+            "": {
+                templateUrl: 'views/reportforduty/dormrefer.html',
+                controller: 'dormreferCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('dormdist', {
+        url: "/dormdist",
+        views: {
+            "": {
+                templateUrl: 'views/reportforduty/dormdist.html',
+                controller: 'dormdistCtrl'
             },
             "aside": {
                 templateUrl: "views/aside.html",
