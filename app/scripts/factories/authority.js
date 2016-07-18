@@ -419,6 +419,16 @@ angular.module('flatpcApp')
                      return ['report','report','dormdist'];
                 else
                     return null;
+             case 'dormdist':
+                if(menuCheck(414))
+                     return ['report','report','dormdist'];
+                else
+                    return null;
+             case 'newstudentschool':
+                if(menuCheck(414))
+                     return ['flat','flat','newstudentschool'];
+                else
+                    return null;
             
                    
                     

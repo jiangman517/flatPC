@@ -1350,6 +1350,23 @@ angular
                 controller: 'HeaderCtrl'
             }
         }
+    })
+    .state('newstudentschool', {
+        url: "/newstudentschool",
+        views: {
+            "": {
+                templateUrl: 'views/grade/newstudentschool.html',
+                controller: 'newstudentschoolCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
     });
     $urlRouterProvider.otherwise('/login');
   });

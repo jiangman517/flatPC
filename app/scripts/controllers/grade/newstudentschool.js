@@ -8,7 +8,7 @@
  * Controller of the flatpcApp
  */
 angular.module('flatpcApp')
-.controller('newStudentCtrl', ['$scope','$rootScope','AppConfig',function($scope,$rootScope,AppConfig) {
+.controller('newstudentschoolCtrl', ['$scope','$rootScope','AppConfig',function($scope,$rootScope,AppConfig) {
         //存储列表头到frame.html中
     $scope.menus = [
         '公寓管理','新生入学管理','新生排宿'
@@ -20,7 +20,7 @@ angular.module('flatpcApp')
         $scope.$apply();
     }
     var a = document.createElement('a');
-    a.href = AppConfig.FRAME + "index.php?m=Apartment&c=FreshmenStay&a=index&token="+AppConfig.token+"&schoolcode="+AppConfig.schoolCode;
+    a.href = AppConfig.FRAME+"index.php?m=Apartment&c=CollegeAllot&a=index&token="+AppConfig.token+"&schoolcode"+AppConfig.schoolCode+"&admin="+AppConfig.adminId;
     a.target="page-frame";
     a.click();
 }]);
