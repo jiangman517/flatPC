@@ -20,7 +20,7 @@ angular.module('flatpcApp')
         $scope.$apply();
     }
     var a = document.createElement('a');
-    a.href = AppConfig.FRAME+"index.php?m=Apartment&c=CollegeAllot&a=index&token="+AppConfig.token+"&schoolcode"+AppConfig.schoolCode+"&admin="+AppConfig.adminId;
+    a.href = AppConfig.FRAME+"index.php?m=Apartment&c=CollegeAllot&a=index&token="+AppConfig.token+"&schoolcode="+AppConfig.schoolCode+"&adminid="+AppConfig.adminId;
     a.target="page-frame";
     a.click();
 }]);
