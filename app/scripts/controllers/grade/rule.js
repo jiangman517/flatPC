@@ -296,12 +296,8 @@ function($scope,AppConfig,$rootScope,RuleService,FlatService,RoomService,$filter
     }
     
     $scope.download = function () {
-        $rootScope.loading = true;
-
-        $rootScope.loading = false;
+        // $rootScope.loading = true;
         RuleService.download($scope.media).success(function (data) {      
-           
-
         })
     }
 }]);
