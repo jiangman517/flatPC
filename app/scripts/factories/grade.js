@@ -364,9 +364,9 @@ angular.module('flatpcApp')
         + (param.roomname?('&roomname='+param.roomname):'')
         + (param.orderfield?('&orderfield='+param.orderfield):'')
         + (param.ordertype?('&ordertype='+param.ordertype):'');
-        return $http.get(url,param).error(function (error) {
-            swal("提示", "网络错误！", "error"); 
-        });
+        var a = document.createElement('a');
+        a.href=url;
+        return a.click();
     };
     var getTopList = function(param){
         param.type = param.type || 0;
@@ -440,9 +440,9 @@ angular.module('flatpcApp')
         + (param.liveareaid?('&liveareaid='+param.liveareaid):'')
         + (param.campusid?('&campusid='+param.campusid):'')
         + (param.tobed?('&tobed='+param.tobed):'');
-        return $http.get(url,param).error(function (error) {
-            swal("提示", "网络错误！", "error"); 
-        });
+        var a = document.createElement('a');
+        a.href=url;
+        return a.click();
     };
     var getStatistics = function(param){
         param.type = param.type || 0;

@@ -135,10 +135,10 @@ angular.module('flatpcApp')
         + (param.source>-1?('&source='+param.source):'')
         + (param.orderfield?('&orderfield='+param.orderfield):'')
         + (param.ordertype?('&ordertype='+param.ordertype):'');
-        return $http.get(url).error(function (error) {
-            swal("提示", "网络错误！", "error"); 
-        });
-    }
+        var a = document.createElement('a');
+        a.href=url;
+        return a.click();
+    };
     var getStatistics = function(param){
         param.type = param.type || 0;
         var url = "";

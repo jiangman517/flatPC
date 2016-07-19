@@ -228,13 +228,7 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                     date:new Date($scope.media.week.year + '-' + $scope.media.week.month + '-' + $scope.media.week.day).Format('yyyy-MM-dd'),
                     type:1
                 }).success(function (data) {
-                    $rootScope.loading = false;
-                    if(data.code == 0){
-                        location.href = data.data.fileUrl;
-                    }
-                    else
-                        swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
-                    //console.log(data);
+                  
                 });
             }else if(this.tab == 3){
                 GradeService.downloadTopList({
@@ -250,13 +244,7 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                     tobed:this.tobed,
                     type:1
                 }).success(function (data) {
-                    $rootScope.loading = false;
-                    if(data.code == 0){
-                        location.href = data.data.fileUrl;
-                    }
-                    else
-                        swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
-                    //console.log(data);
+                   
                 });
             }
         }
