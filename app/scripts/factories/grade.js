@@ -287,7 +287,7 @@ angular.module('flatpcApp')
         var url = "";
         switch (param.type) {
             case 0:
-                url = AppConfig.WEB_ROOT + 'evaluation/weekscore/score_search/?'
+                url = AppConfig.WEB_ROOT + 'evaluation/weekscore/weekscore_search/?'
                 + 'schoolcode=' + AppConfig.schoolCode + '&token=' + AppConfig.token
                 + '&semesterid=' + (param.semesterid || "") + '&currentweek=' + (param.currentweek || "");
                 break;
@@ -297,7 +297,7 @@ angular.module('flatpcApp')
                 + '&date=' + ( new Date(param.date).Format('yyyy-MM-dd') || new Date().Format('yyyy-MM-dd'));
                 break;
             case 2:
-                url = AppConfig.WEB_ROOT + 'evaluation/monthscore/score_search/?'
+                url = AppConfig.WEB_ROOT + 'evaluation/monthscore/monthscore_search/?'
                 + 'schoolcode=' + AppConfig.schoolCode + '&token=' + AppConfig.token
                 + '&date=' + (new Date(param.date + '-01').Format('yyyy-MM') || new Date().Format('yyyy-MM'));
                 break;
