@@ -173,18 +173,18 @@ angular.module('flatpcApp')
     }
 
     $scope.download = function () {
-        $rootScope.loading = true;
+        // $rootScope.loading = true;
         RuleService.downloadStatistics($scope.media).success(function (data) {
-            // console.log(data);            
-            $rootScope.loading = false;
-            if(data.code == 0){
-                location.href = data.data.fileUrl;
-            }else if(data.code == 4037){
-                            swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
-                            location.href="#login";$rootScope.loading = false;
-                        }
-            else
-                swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+            // // console.log(data);            
+            // $rootScope.loading = false;
+            // if(data.code == 0){
+            //     location.href = data.data.fileUrl;
+            // }else if(data.code == 4037){
+            //                 swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+            //                 location.href="#login";$rootScope.loading = false;
+            //             }
+            // else
+            //     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
         })
     }
     $scope.loadInfo = function (room) {

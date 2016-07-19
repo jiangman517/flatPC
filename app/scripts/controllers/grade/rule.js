@@ -297,17 +297,11 @@ function($scope,AppConfig,$rootScope,RuleService,FlatService,RoomService,$filter
     
     $scope.download = function () {
         $rootScope.loading = true;
-        RuleService.download($scope.media).success(function (data) {
-            console.log(data);            
-            $rootScope.loading = false;
-            if(data.code == 0){
-                location.href = data.data.fileUrl;
-            }else if(data.code == 4037){
-                            swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
-                            location.href="#login";$rootScope.loading = false;
-                        }
-            else
-                swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+
+        $rootScope.loading = false;
+        RuleService.download($scope.media).success(function (data) {      
+           
+
         })
     }
 }]);

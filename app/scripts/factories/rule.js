@@ -117,7 +117,7 @@ angular.module('flatpcApp')
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            params:param
+            params:param 
         }).error(function (error) {
             swal("提示", "网络错误！", "error"); 
         });//.get(url,param);
@@ -194,9 +194,9 @@ angular.module('flatpcApp')
         + (param.liveareaid?('&liveareaid='+param.liveareaid):'')
         + (param.campusid?('&campusid='+param.campusid):'')
         + (param.roomid?('&roomid='+param.roomid):'');
-        return $http.get(url).error(function (error) {
-            swal("提示", "网络错误！", "error"); 
-        });
+       var a = document.createElement('a');
+        a.href=url;
+        return a.click();
     };
     return {
         getList:getList,
