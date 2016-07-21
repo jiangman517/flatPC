@@ -57,7 +57,7 @@ angular.module('flatpcApp')
         $scope.media.listOrder=item.listOrder || 1;
     }
     
-    //添加班级时清空缓存
+    //添加班级和学院时清空缓存
     $scope.add = function(type,item){
         $scope.media.status = 1;
         $scope.media.type = type;
