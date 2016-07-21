@@ -19,7 +19,7 @@ angular.module('flatpcApp')
         degree:'',
         degreeYear:'',
         classId:'',
-        shortname:'',
+        shortName:'',
         history:0,
         menuCheck : function () {
             switch (this.type){
@@ -44,7 +44,7 @@ angular.module('flatpcApp')
     $scope.show = function(type,item){
         $scope.media.status = 0;
         $scope.media.type = type;
-        $scope.media.shortname= item.shortname || '';
+        $scope.media.shortName= item.shortName || '';
         $scope.media.name= item.name || '';
         $scope.media.collegeName=item.collegeName || '';
         $scope.media.collegeId = item.collegeId || '';
@@ -62,6 +62,7 @@ angular.module('flatpcApp')
         $scope.media.status = 1;
         $scope.media.type = type;
         $scope.media.collegeName= '';
+        $scope.media.shortName='';
         $scope.media.className= '';
         $scope.media.grade= '';
         $scope.media.degree='';
@@ -69,6 +70,7 @@ angular.module('flatpcApp')
         $scope.media.listOrder= 1;
         $scope.media.collegeId = item.collegeId || '';
         $scope.media.history = false;
+        
     }
     $scope.addSave = function(){
         $rootScope.loading = true;
@@ -79,7 +81,7 @@ angular.module('flatpcApp')
                     schoolcode:AppConfig.schoolCode,
                     listorder:$scope.media.listOrder,
                     title:$scope.media.collegeName,
-                    shortname:$scope.media.shortname
+                    shortname:$scope.media.shortName
                 })
             }else if($scope.media.type == 2){
                 return CollegeService.addClass({
@@ -117,7 +119,7 @@ angular.module('flatpcApp')
                     collegeid:$scope.media.collegeId,
                     listorder:$scope.media.listOrder,
                     title:$scope.media.collegeName,
-                    shortname:$scope.media.shortname
+                    shortname:$scope.media.shortName
                 }).success(function(){
                     $rootScope.loading = false;
                 })
