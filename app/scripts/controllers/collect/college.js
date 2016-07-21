@@ -44,11 +44,10 @@ angular.module('flatpcApp')
     $scope.show = function(type,item){
         $scope.media.status = 0;
         $scope.media.type = type;
-        
+        $scope.media.shortname= item.shortname || '';
         $scope.media.name= item.name || '';
         $scope.media.collegeName=item.collegeName || '';
         $scope.media.collegeId = item.collegeId || '';
-        
         $scope.media.className=item.className || '';
         $scope.media.classId=item.classId || '';
         $scope.media.grade=item.grade || '';
