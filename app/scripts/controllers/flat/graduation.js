@@ -357,6 +357,7 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
         },
         collegeClassSearch:function () {
             var that = this;
+            this.classList = []; //重置数据
             $rootScope.loading = true;
             StudentService.getCollegeclassByYear({
                 schoolCode:AppConfig.schoolCode,
