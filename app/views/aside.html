@@ -34,6 +34,23 @@
         </a>
     </li>
 </ul>
+<ul ng-show="sysMenu[0]=='entry'">
+    <li ng-if="menuCheck(422)" ng-class="{'active':sysMenu[1]=='entry'}" ng-click="switch('entry')">
+        <a href="#index" title="统计管理">
+            <i class="ALiconfont icon-shangwuqu"></i> 统计管理
+        </a>
+    </li>
+    <!--<li ng-if="menuCheck(423)" ng-class="{'active':sysMenu[1]==''}" ng-click="switch('')">
+        <a href="#index" title="请假管理">
+            <i class="ALiconfont icon-xinyongfen" style="font-size:20px"></i> 请假管理
+        </a>
+    </li>
+    <li ng-if="menuCheck(424)" ng-class="{'active':sysMenu[1]=='1'}" ng-click="switch('1')">
+        <a href="#index" title="设备管理">
+            <i class="ALiconfont icon-order" style="font-size:20px"></i> 设备管理
+        </a>
+    </li>-->
+</ul>
 <ul ng-show="sysMenu[0]=='data'">
     <li ng-if="menuCheck(9)" ng-class="{'active':sysMenu[1]=='data'}" ng-click="switch('data')">
         <a href="#index" title="基础设置">

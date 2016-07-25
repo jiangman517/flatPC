@@ -105,6 +105,18 @@ angular.module('flatpcApp')
                         return;
                     }
                     break;
+                case 'exam':
+                    if(!$rootScope.menuCheck(416)){
+                        swal("提示","请联系客服电话0571-28256212 开通权限", "info"); 
+                        return;
+                    }
+                    break;
+                case 'entry':
+                    if(!$rootScope.menuCheck(421)){
+                        swal("提示","请联系客服电话0571-28256212 开通权限", "info"); 
+                        return;
+                    }
+                    break;
             }
             $rootScope.sysMenu[0] = name;
             $rootScope.sysMenu[1] = name;
@@ -156,7 +168,9 @@ angular.module('flatpcApp')
             message:!new RegExp(",message,").test(","+toggles+","),
             graduate:!new RegExp(",graduate,").test(","+toggles+","),
             shower:!new RegExp(",shower,").test(","+toggles+","),
-            report:!new RegExp(",report,").test(","+toggles+",")
+            report:!new RegExp(",report,").test(","+toggles+","),
+            exam:!new RegExp(",exam,").test(","+toggles+","),
+            entry:!new RegExp(",entry,").test(","+toggles+",")
         }
         $scope.change = function name(params) {
             swal("提示","请联系客服电话0571-28256212 修改密码", "info"); 
@@ -204,6 +218,8 @@ angular.module('flatpcApp')
             if(!$scope.media.graduate)str += "graduate,";
             if(!$scope.media.shower)str += "shower,";
             if(!$scope.media.report)str += "report,";
+            if(!$scope.media.exam)str += "exam,";
+            if(!$scope.media.entry)str += "entry,";
 
             if(str.length>0){
                 localStorage.toggles = str.substring(0,str.length-1);
