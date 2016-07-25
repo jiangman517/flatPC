@@ -430,33 +430,33 @@ angular.module('flatpcApp')
                      return ['report','report','dormdist'];
                 else
                     return null;
-             case 'dormdist':
-                if(menuCheck(414))
-                     return ['report','report','dormdist'];
-                else
-                    return null;
+            //  case 'dormdist':
+            //     if(menuCheck(414))
+            //          return ['report','report','dormdist'];
+            //     else
+            //         return null;
              case 'newstudentschool':
-                if(menuCheck(414))
+                if(menuCheck(415))
                      return ['flat','flat','newstudentschool'];
                 else
                     return null;
              case 'exams':
-                if(menuCheck(414))
-                     return ['exam','flat','exams'];
+                if(menuCheck(417))
+                     return ['exam','exam','exams'];
                 else
                     return null;
              case 'examgrade':
-                if(menuCheck(414))
+                if(menuCheck(418))
                      return ['exam','exam','examgrade'];
                 else
                     return null;
              case 'exammessage':
-                if(menuCheck(414))
+                if(menuCheck(419))
                      return ['exam','exam','exammessage'];
                 else
                     return null;
              case 'exampeople':
-                if(menuCheck(414))
+                if(menuCheck(420))
                      return ['exam','exam','exampeople'];
                 else
                     return null;
