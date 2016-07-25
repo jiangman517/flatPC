@@ -4,7 +4,7 @@ angular.module('flatpcApp')
 .controller('exampeopleCtrl', ['$scope','$rootScope','AppConfig',function($scope,$rootScope,AppConfig) {
         //存储列表头到frame.html中
     $scope.menus = [
-         '考试系统','人员管理','人员管理'
+         '考试系统','人员管理'
     ];
     //跳转到什么地方去
     $scope.parent = "exam";

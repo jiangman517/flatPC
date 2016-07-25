@@ -64,7 +64,7 @@ angular.module('flatpcApp')
                     swal("提示","敬请期待", "info"); 
                     return;
                     
-                case 'data':
+                case 'center':
                     if(!$rootScope.menuCheck(2)){
                         swal("提示","请联系客服电话0571-28256212 开通权限", "info"); 
                         return;
@@ -91,7 +91,7 @@ angular.module('flatpcApp')
                         return;
                     }
                     break;
-                case 'shower':
+                case 'order':
                     if(!$rootScope.menuCheck(367)){
                         
                         swal("提示","请联系客服电话0571-28256212 开通权限", "info"); 
@@ -100,6 +100,13 @@ angular.module('flatpcApp')
                     break;
                 case 'report':
                     if(!$rootScope.menuCheck(401)){
+                        
+                        swal("提示","请联系客服电话0571-28256212 开通权限", "info"); 
+                        return;
+                    }
+                    break;
+                case 'exammessage':
+                    if(!$rootScope.menuCheck(416)){
                         
                         swal("提示","请联系客服电话0571-28256212 开通权限", "info"); 
                         return;
@@ -151,12 +158,13 @@ angular.module('flatpcApp')
             food:!new RegExp(",food,").test(","+toggles+","),
             water:!new RegExp(",water,").test(","+toggles+","),
             pay:!new RegExp(",pay,").test(","+toggles+","),
-            data:!new RegExp(",data,").test(","+toggles+","),
+            center:!new RegExp(",center,").test(","+toggles+","),
             admin:!new RegExp(",admin,").test(","+toggles+","),
             message:!new RegExp(",message,").test(","+toggles+","),
             graduate:!new RegExp(",graduate,").test(","+toggles+","),
-            shower:!new RegExp(",shower,").test(","+toggles+","),
-            report:!new RegExp(",report,").test(","+toggles+",")
+            order:!new RegExp(",order,").test(","+toggles+","),
+            report:!new RegExp(",report,").test(","+toggles+","),
+            exammessage:!new RegExp(",exammessage,").test(","+toggles+",")
         }
         $scope.change = function name(params) {
             swal("提示","请联系客服电话0571-28256212 修改密码", "info"); 
@@ -198,13 +206,13 @@ angular.module('flatpcApp')
             if(!$scope.media.food)str += "food,";
             if(!$scope.media.water)str += "water,";
             if(!$scope.media.pay)str += "pay,";
-            if(!$scope.media.data)str += "data,";
+            if(!$scope.media.center)str += "center,";
             if(!$scope.media.admin)str += "admin,";
             if(!$scope.media.message)str += "message,";
             if(!$scope.media.graduate)str += "graduate,";
-            if(!$scope.media.shower)str += "shower,";
+            if(!$scope.media.order)str += "order,";
             if(!$scope.media.report)str += "report,";
-
+            if(!$scope.media.exammessage)str += "exammessage,";
             if(str.length>0){
                 localStorage.toggles = str.substring(0,str.length-1);
             }else localStorage.toggles ="";

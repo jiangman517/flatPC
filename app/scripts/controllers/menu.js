@@ -29,8 +29,10 @@ angular.module('flatpcApp')
                 break;
             case 'data':
                 if($rootScope.menuCheck(2)){
-                    menus.push('data');
-                    if($rootScope.menuCheck(9)){
+                     menus.push('center');
+                    if($rootScope.menuCheck(353)){
+                        menus.push('center');
+                    }else if($rootScope.menuCheck(9)){
                         menus.push('data');
                     }else if($rootScope.menuCheck(10)){
                         menus.push('collect');

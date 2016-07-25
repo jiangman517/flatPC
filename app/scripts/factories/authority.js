@@ -36,8 +36,10 @@ angular.module('flatpcApp')
                             menus.push('check');
                         }else menus.push(' ');
                     }else if(menuCheck(2)){
-                        menus.push('data');
-                        if(menuCheck(9)){
+                        menus.push('center');
+                        if(menuCheck(353)){
+                            menus.push('center');
+                        }else if(menuCheck(9)){
                             menus.push('data');
                         }else if(menuCheck(10)){
                             menus.push('collect');
@@ -224,52 +226,52 @@ angular.module('flatpcApp')
                     return null;
             case 'floor':
                 if(menuCheck(125))
-                    return ['data','floor','floor'];
+                    return ['center','floor','floor'];
                 else
                     return null;
             case 'room':
                 if(menuCheck(128))
-                    return ['data','floor','room'];
+                    return ['center','floor','room'];
                 else
                     return null;
             case 'type':
                 if(menuCheck(130))
-                    return ['data','floor','type'];
+                    return ['center','floor','type'];
                 else
                     return null;
             case 'student':
                 if(menuCheck(108))
-                    return ['data','collect','student'];
+                    return ['center','collect','student'];
                 else
                     return null;
             case 'stay':
                 if(menuCheck(129))
-                    return ['data','collect','stay'];
+                    return ['center','collect','stay'];
                 else
                     return null;
             case 'class':
                 if(menuCheck(107))
-                    return ['data','collect','class'];
+                    return ['center','collect','class'];
                 else
                     return null;
             case 'term':
                 if(menuCheck(104))
-                    return ['data','data','term'];
+                    return ['center','data','term'];
                 else
                     return null;
             case 'userList':
                 if(menuCheck(357))
-                    return ['data','center','userList'];
+                    return ['center','center','userList'];
                 else
                     return null;
            case 'verify':
                 if(menuCheck(358))
-                    return ['data','center','verify'];
+                    return ['center','center','verify'];
                 else
                     return null;
            case 'form':
                 if(menuCheck(359))
-                    return ['data','center','form'];
+                    return ['center','center','form'];
                 else
                     return null;
             case 'user':
@@ -335,19 +337,19 @@ angular.module('flatpcApp')
             case 'order':
                 if(menuCheck(367))
                 //头部菜单，左侧菜单，规则名
-                    return ['shower','order','order'];
+                    return ['order','order','order'];
                 else
                     return null;
              case 'showper':
                 if(menuCheck(367))
                 //头部菜单，左侧菜单，规则名
-                    return ['shower','personnel','personnel'];
+                    return ['order','personnel','personnel'];
                 else
                     return null;
              case 'showset':
                 if(menuCheck(367))
                 //头部菜单，左侧菜单，规则名
-                    return ['shower','setting','setting'];
+                    return ['order','setting','setting'];
                 else
                     return null; 
             case 'kuaicha':
@@ -430,34 +432,29 @@ angular.module('flatpcApp')
                      return ['report','report','dormdist'];
                 else
                     return null;
-             case 'dormdist':
-                if(menuCheck(414))
-                     return ['report','report','dormdist'];
-                else
-                    return null;
              case 'newstudentschool':
-                if(menuCheck(414))
+                if(menuCheck(415))
                      return ['flat','flat','newstudentschool'];
                 else
                     return null;
              case 'exams':
-                if(menuCheck(414))
-                     return ['exam','flat','exams'];
+                if(menuCheck(417))
+                     return ['exammessage','exams','exams'];
                 else
                     return null;
              case 'examgrade':
-                if(menuCheck(414))
-                     return ['exam','exam','examgrade'];
+                if(menuCheck(418))
+                     return ['exammessage','examgrade','examgrade'];
                 else
                     return null;
              case 'exammessage':
-                if(menuCheck(414))
-                     return ['exam','exam','exammessage'];
+                if(menuCheck(419))
+                     return ['exammessage','exammessage','exammessage'];
                 else
                     return null;
              case 'exampeople':
-                if(menuCheck(414))
-                     return ['exam','exam','exampeople'];
+                if(menuCheck(420))
+                     return ['exammessage','exampeople','exampeople'];
                 else
                     return null;
             
