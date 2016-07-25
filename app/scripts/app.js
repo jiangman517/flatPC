@@ -29,6 +29,7 @@ angular
     REPORT:'http://test.houqinbao.com/Report/',
     SHOWER:'http://code.houqinbao.com:3338/Shower/',
     UCENTER:'http://code.houqinbao.com:3338/ucenter',
+    EXAM:'http://test.houqinbao.com/Examination/',
       schoolCode:0,
 	  token:'',
       adminId:0,
@@ -1357,6 +1358,74 @@ angular
             "": {
                 templateUrl: 'views/grade/newstudentschool.html',
                 controller: 'newstudentschoolCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('exams', {
+        url: "/exams",
+        views: {
+            "": {
+                templateUrl: 'views/exam/exams.html',
+                controller: 'examsCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('examgrade', {
+        url: "/examgrade",
+        views: {
+            "": {
+                templateUrl: 'views/exam/examgrade.html',
+                controller: 'examgradeCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('exampeople', {
+        url: "/exampeople",
+        views: {
+            "": {
+                templateUrl: 'views/exam/exampeople.html',
+                controller: 'exampeopleCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('exammessage', {
+        url: "/exammessage",
+        views: {
+            "": {
+                templateUrl: 'views/exam/exammessage.html',
+                controller: 'exammessageCtrl'
             },
             "aside": {
                 templateUrl: "views/aside.html",

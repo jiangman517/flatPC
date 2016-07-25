@@ -52,13 +52,24 @@ angular.module('flatpcApp')
                             menus.push('role');
                         }else menus.push(' ');
                     }else if(menuCheck(367)){
-                         menus.push('order');
+                         menus.push('shower');
                         if(menuCheck(382)){
                             menus.push('order');
                         }else if(menuCheck(383)){
                             menus.push('personnel');
                         }else if(menuCheck(384)){
                             menus.push('setting');
+                        }else menus.push(' ');
+                    }else if(menuCheck(416)){
+                         menus.push('exams');
+                        if(menuCheck(417)){
+                            menus.push('exams');
+                        }else if(menuCheck(418)){
+                            menus.push('examgrade');
+                        }else if(menuCheck(419)){
+                            menus.push('exammessage');
+                        }else if(menuCheck(420)){
+                            menus.push('exampeople');
                         }else menus.push(' ');
                     }
                     menus.push(' ')
@@ -427,6 +438,26 @@ angular.module('flatpcApp')
              case 'newstudentschool':
                 if(menuCheck(414))
                      return ['flat','flat','newstudentschool'];
+                else
+                    return null;
+             case 'exams':
+                if(menuCheck(414))
+                     return ['exam','flat','exams'];
+                else
+                    return null;
+             case 'examgrade':
+                if(menuCheck(414))
+                     return ['exam','exam','examgrade'];
+                else
+                    return null;
+             case 'exammessage':
+                if(menuCheck(414))
+                     return ['exam','exam','exammessage'];
+                else
+                    return null;
+             case 'exampeople':
+                if(menuCheck(414))
+                     return ['exam','exam','exampeople'];
                 else
                     return null;
             

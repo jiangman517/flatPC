@@ -95,5 +95,30 @@
         </a>
     </li>
 </ul>
+
+<ul ng-show="sysMenu[0]=='exam'">
+    <!--默认选中哪一个选项-->
+    <li ng-if="menuCheck(417)" ng-class="{'active':sysMenu[1]=='exams'}" ng-click="switch('exams')">
+        <a href="#exams" title="试卷设置">
+            <i class="ALiconfont icon-yuyueshouli" style="font-size:23px"></i> 试卷设置
+        </a>
+    </li> 
+    <li ng-if="menuCheck(418)" ng-class="{'active':sysMenu[1]=='examgrade'}" ng-click="switch('examgrade')">
+        <a href="#examgrade" title="等级管理">
+            <i class="ALiconfont icon-yonghubiao" style="font-size:23px"></i> 等级管理
+        </a>
+    </li>
+    <li ng-if="menuCheck(419)" ng-class="{'active':sysMenu[1]=='exammessage'}" ng-click="switch('exammessage')">
+        <a href="#exammessage" title="考试详情">
+            <i class="ALiconfont icon-shezhi" style="font-size:23px"></i> 考试详情
+        </a>
+    </li>
+    <li ng-if="menuCheck(420)" ng-class="{'active':sysMenu[1]=='exampeople'}" ng-click="switch('exampeople')">
+        <a href="#exampeople" title="人员管理">
+            <i class="ALiconfont icon-shezhi" style="font-size:23px"></i> 人员管理
+        </a>
+    </li>
+</ul>
+
 </div>
 <i class="collapse" ng-click="changeMini()"></i>
