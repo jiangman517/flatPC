@@ -116,7 +116,7 @@
             <tr ng-show="media.type == 2">
                 <td class="require" width="200">毕业</td><td><input bs-switch ng-model="media.history" type="checkbox" switch-size="mini" switch-on-text="已毕业" switch-off-text="在籍" switch-active="{{media.type == 2 && media.menuCheck()}}"></td>
             </tr>
-            <tr ng-show="media.type > 0">
+            <tr ng-show="media.type == 1">
                 <td class="require" width="200">学院简称</td><td><input type="text" ng-model="media.shortName" ng-disabled="!media.menuCheck()"  placeholder="最多5个字" onkeyup="value=value.replace(/[\d]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[\d]/g,''))" maxlength=5 name=""/></td>
             </tr>
             <tr ng-show="media.type > 0">

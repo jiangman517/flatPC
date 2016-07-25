@@ -440,11 +440,13 @@ angular.module('flatpcApp')
              case 'exams':
                 if(menuCheck(417))
                      return ['exammessage','exams','exams'];
+
                 else
                     return null;
              case 'examgrade':
                 if(menuCheck(418))
                      return ['exammessage','examgrade','examgrade'];
+
                 else
                     return null;
              case 'exammessage':
@@ -455,6 +457,7 @@ angular.module('flatpcApp')
              case 'exampeople':
                 if(menuCheck(420))
                      return ['exammessage','exampeople','exampeople'];
+
                 else
                     return null;
             

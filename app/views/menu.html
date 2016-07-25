@@ -413,6 +413,52 @@
             </li>
         </ul>
     </li>
+    <li ng-if="menuCheck(425)" ng-show="sysMenu[1]=='entry'">
+        <div class="menu-title">统计管理</div>
+        <ul class="menu-list">
+            <li ng-if="menuCheck(430)">
+                <a>
+                    <i class="ALiconfont icon-baodaotongji" style="background-color:#d3d6d9;font-size:25px"></i>
+                    综合预览
+                </a>
+            </li>
+            <li ng-if="menuCheck(431)">
+                <a>
+                    <i class="ALiconfont icon-message" style="background-color:#d3d6d9;font-size:25px"></i>
+                    行为预警
+                </a>
+            </li>
+            <li ng-if="menuCheck(426)">
+                <a href="">
+                    <i class="ALiconfont icon-chart" style="background-color:#02cf97;font-size:25px"></i>
+                   出入统计
+                </a>
+            </li>
+            <li ng-if="menuCheck(427)">
+                <a href="">
+                    <i class="ALiconfont icon-baodaotongji" style="background-color:#fc7257;font-size:25px"></i>
+                    异常统计
+                </a>
+            </li>
+            <li ng-if="menuCheck(432)">
+                <a>
+                    <i class="ALiconfont icon-message" style="background-color:#d3d6d9;font-size:25px"></i>
+                    管理排名
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="menuCheck(428)" ng-show="sysMenu[1]=='entry'">
+        <div class="menu-title">设置</div>
+        <ul class="menu-list">
+            <li ng-if="menuCheck(429)">
+                <a href="">
+                    <i class="ALiconfont icon-set" style="background-color:#38adff;font-size:25px"></i>
+                   设置
+                </a>
+            </li>
+        </ul>
+    </li>
     <li ng-if="menuCheck(355)" ng-show="sysMenu[1]=='center'">
         <div class="menu-title">用户中心</div>
         <ul class="menu-list">
