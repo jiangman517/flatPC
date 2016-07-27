@@ -1216,6 +1216,40 @@ angular
             }
         }
     })
+    .state('receiveinfo', {
+        url: "/receiveinfo",
+        views: {
+            "": {
+                templateUrl: 'views/collect/receiveinfo.html',
+                controller: 'receiveinfoCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('packageset', {
+        url: "/packageset",
+        views: {
+            "": {
+                templateUrl: 'views/collect/packageset.html',
+                controller: 'packagesetCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
     .state('quiltse', {
         url: "/quiltse",
         views: {

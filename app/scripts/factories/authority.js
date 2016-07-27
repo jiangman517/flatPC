@@ -392,6 +392,16 @@ angular.module('flatpcApp')
                     return ['report','report','repnoe'];
                 else
                     return null;
+            case 'receiveinfo':
+                if(menuCheck(435))
+                    return ['report','package','receiveinfo'];
+                else
+                    return null;
+            case 'packageset':
+                if(menuCheck(436))
+                    return ['report','package','packageset'];
+                else
+                    return null;
             case 'quiltse':
                 if(menuCheck(402))
                    return ['report','quiltreserve','quiltse'];

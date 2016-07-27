@@ -413,6 +413,26 @@
             </li>
         </ul>
     </li>
+
+    <li ng-if="menuCheck(433)" ng-show="sysMenu[1]=='package'">
+        <div class="menu-title">新生礼包</div>
+        <ul class="menu-list">
+            <li ng-if="menuCheck(435)">
+                <a href="#receiveinfo">
+                    <i class="ALiconfont icon-baodaominglu" style="background-color:#02cf97;font-size:25px"></i>
+                   领取信息
+                </a>
+            </li>
+            <li ng-if="menuCheck(436)">
+                <a href="#packageset">
+                    <i class="ALiconfont icon-set" style="background-color:#38adff;font-size:25px"></i>
+                    礼包设置
+                </a>
+            </li>            
+        </ul>
+    </li>
+
+
     <li ng-if="menuCheck(425)" ng-show="sysMenu[1]=='entry'">
         <div class="menu-title">统计管理</div>
         <ul class="menu-list">
