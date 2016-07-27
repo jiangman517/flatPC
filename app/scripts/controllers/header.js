@@ -129,42 +129,32 @@ angular.module('flatpcApp')
             PublicService.logout().success(function (data) {
                 $rootScope.loading = false;
                     if(data.code == 0){
-                        // localStorage.adminId = "";
-                        // localStorage.token = "";
-                        // localStorage.nodeIds = "";
-                        // localStorage.schoolCode = "";
-                        // localStorage.userName = "";
-                        // localStorage.roleName = "";
-                        // localStorage.roleId = "";
-                        // localStorage.userAccount = "";
-                        // localStorage.isOpenBed = "";
-
-                        function deleteCookie(name){ 
+                        function delcookie(name){ 
                             var date=new Date(); 
                             date.setTime(date.getTime()-10000); 
                             document.cookie=name+"=v; expires="+date.toGMTString(); 
                         }
-                        deleteCookie('adminId');
-                        deleteCookie('token');
-                        deleteCookie('nodeIds');
-                        deleteCookie('schoolCode');
-                        deleteCookie('userName');
-                        deleteCookie('roleName');
-                        deleteCookie('roleId');
-                        deleteCookie('userAccount');
-                        deleteCookie('isOpenBed');
-                        deleteCookie('week');
-                        deleteCookie('month');
-                        deleteCookie('day');
-                        deleteCookie('bed');
-                        deleteCookie('pass');
-                        deleteCookie('photo');
-                        deleteCookie('role');
-                        deleteCookie('takephoto');
-                        deleteCookie('tokenMessage');
-                        deleteCookie('schoolname');
-                        deleteCookie('check');
-
+                        delcookie('adminId');
+                        delcookie('token');
+                        delcookie('nodeIds');
+                        delcookie('schoolCode');
+                        delcookie('userName');
+                        delcookie('roleName');
+                        delcookie('roleId');
+                        delcookie('userAccount');
+                        delcookie('isOpenBed');
+                        delcookie('week');
+                        delcookie('month');
+                        delcookie('day');
+                        delcookie('bed');
+                        delcookie('pass');
+                        delcookie('photo');
+                        delcookie('role');
+                        delcookie('takephoto');
+                        delcookie('tokenMessage');
+                        delcookie('schoolname');
+                        delcookie('check');
+                        
                         sessionStorage.removeItem('adminId');
                         sessionStorage.removeItem('token');
                         sessionStorage.removeItem('nodeIds');
