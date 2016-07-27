@@ -355,6 +355,9 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
                 }
             }
         },
+        yearChangeEvent:function(){
+            this.collegeClassList = [];
+        },
         collegeClassSearch:function () {
             var that = this;
             this.classList = []; //重置数据

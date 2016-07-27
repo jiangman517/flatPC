@@ -295,7 +295,7 @@
                                     <form class="form-tabs-tool-bar" ng-submit="form.collegeClassSearch()">
                                         <div class="batch-tool-bar">
                                             <span>请选择毕业年</span>
-                                            <select class="form-control" ng-options="y.id as y.text for y in form.selectYear" ng-model="form.year"></select>
+                                            <select class="form-control" ng-change="form.yearChangeEvent()" ng-options="y.id as y.text for y in form.selectYear" ng-model="form.year"></select>
                                         </div>
                                         <div>
                                             <button ng-hide="form.collegeClassList.length>0" type="submit" class="btn btn-stroke btn-info btn-batch">搜索</button>
