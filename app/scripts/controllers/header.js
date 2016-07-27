@@ -129,15 +129,62 @@ angular.module('flatpcApp')
             PublicService.logout().success(function (data) {
                 $rootScope.loading = false;
                     if(data.code == 0){
-                        localStorage.adminId = "";
-                        localStorage.token = "";
-                        localStorage.nodeIds = "";
-                        localStorage.schoolCode = "";
-                        localStorage.userName = "";
-                        localStorage.roleName = "";
-                        localStorage.roleId = "";
-                        localStorage.userAccount = "";
-                        localStorage.isOpenBed = "";
+                        // localStorage.adminId = "";
+                        // localStorage.token = "";
+                        // localStorage.nodeIds = "";
+                        // localStorage.schoolCode = "";
+                        // localStorage.userName = "";
+                        // localStorage.roleName = "";
+                        // localStorage.roleId = "";
+                        // localStorage.userAccount = "";
+                        // localStorage.isOpenBed = "";
+
+                        function deleteCookie(name){ 
+                            var date=new Date(); 
+                            date.setTime(date.getTime()-10000); 
+                            document.cookie=name+"=v; expires="+date.toGMTString(); 
+                        }
+                        deleteCookie('adminId');
+                        deleteCookie('token');
+                        deleteCookie('nodeIds');
+                        deleteCookie('schoolCode');
+                        deleteCookie('userName');
+                        deleteCookie('roleName');
+                        deleteCookie('roleId');
+                        deleteCookie('userAccount');
+                        deleteCookie('isOpenBed');
+                        deleteCookie('week');
+                        deleteCookie('month');
+                        deleteCookie('day');
+                        deleteCookie('bed');
+                        deleteCookie('pass');
+                        deleteCookie('photo');
+                        deleteCookie('role');
+                        deleteCookie('takephoto');
+                        deleteCookie('tokenMessage');
+                        deleteCookie('schoolname');
+                        deleteCookie('check');
+
+                        sessionStorage.removeItem('adminId');
+                        sessionStorage.removeItem('token');
+                        sessionStorage.removeItem('nodeIds');
+                        sessionStorage.removeItem('schoolCode');
+                        sessionStorage.removeItem('userName');
+                        sessionStorage.removeItem('roleName');
+                        sessionStorage.removeItem('roleId');
+                        sessionStorage.removeItem('userAccount');
+                        sessionStorage.removeItem('isOpenBed');
+                        sessionStorage.removeItem('week');
+                        sessionStorage.removeItem('month');
+                        sessionStorage.removeItem('day');
+                        sessionStorage.removeItem('bed');
+                        sessionStorage.removeItem('pass');
+                        sessionStorage.removeItem('photo');
+                        sessionStorage.removeItem('role');
+                        sessionStorage.removeItem('takephoto');
+                        sessionStorage.removeItem('check');
+                        sessionStorage.removeItem('tokenMessage');
+                        sessionStorage.removeItem('schoolname');
                         var form = document.createElement("form");
                         form.target = "test";
                         form.method = "post";
