@@ -35,8 +35,11 @@ angular.module('flatpcApp')
     };
     $scope.show = function(status,type,item,college,campus,liveArea){
         $scope.media.status = status;
-        $scope.media.type = 1;
-        
+        if(type>0){
+            $scope.media.type=type;
+        }else{
+             $scope.media.type = 1;
+        }
         $scope.media.title = college || item.title || '';
         
         $scope.media.campusTitle = campus || item.title || '';
