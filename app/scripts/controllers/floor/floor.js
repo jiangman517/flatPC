@@ -33,9 +33,9 @@ angular.module('flatpcApp')
             return false;
         }
     };
-    $scope.show = function(type,item,college,campus,liveArea){
-        $scope.media.status = 0;
-        $scope.media.type = type;
+    $scope.show = function(status,type,item,college,campus,liveArea){
+        $scope.media.status = status;
+        $scope.media.type = 1;
         
         $scope.media.title = college || item.title || '';
         
