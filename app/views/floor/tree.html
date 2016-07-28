@@ -16,21 +16,21 @@
                 <a ng-class="{'branch':treeFlat.cmpusList,'leaf':!treeFlat.cmpusList}">{{treeFlat.title}}</a>
                 <ul ng-show="treeFlat.cmpusList">
                     <li class="open" ng-repeat="campus in treeFlat.cmpusList||[]">
-                        <a ng-click="show(0,1,campus,treeFlat.title)" ng-class="{'branch':campus.liveAreaList,'leaf':!campus.liveAreaList}">{{campus.title}}</a>
+                        <a ng-click="add(1,campus,treeFlat.title)" ng-class="{'branch':campus.liveAreaList,'leaf':!campus.liveAreaList}">{{campus.title}}</a>
                         <ul ng-show="campus.liveAreaList">
                             <li class="" ng-repeat="liveArea in campus.liveAreaList||[]">
-                                <a ng-click="show(0,2,liveArea,treeFlat.title,campus.title)" ng-class="{'branch':liveArea.flatList,'leaf':!liveArea.flatList}">{{liveArea.title}}</a>
+                                <a ng-click="add(2,liveArea,treeFlat.title,campus.title)" ng-class="{'branch':liveArea.flatList,'leaf':!liveArea.flatList}">{{liveArea.title}}</a>
                                 <ul ng-show="liveArea.flatList">
                                     <li ng-repeat="flat in liveArea.flatList||[]">
-                                        <a ng-click="show(0,3,flat,treeFlat.title,campus.title,liveArea.title)" class="leaf">{{flat.title}}</a>
+                                        <a ng-click="add(3,flat,treeFlat.title,campus.title,liveArea.title)" class="leaf">{{flat.title}}</a>
                                     </li>
-                                    <li ng-if="menuCheck(227)"><a class="add" ng-click="add(3,liveArea,campus.title)"><i class="ALiconfont icon-plus1"></i> 添加楼栋</a></li>
+                                    <li ng-if="menuCheck(227)"><a class="add" ng-click="show(3,liveArea,campus.title)"><i class="ALiconfont icon-plus1"></i> 添加楼栋</a></li>
                                 </ul>
                             </li>
-                            <li ng-if="menuCheck(224)"><a class="add" ng-click="add(2,campus)"><i class="ALiconfont icon-plus1"></i> 添加生活区</a></li>
+                            <li ng-if="menuCheck(224)"><a class="add" ng-click="show(2,campus)"><i class="ALiconfont icon-plus1"></i> 添加生活区</a></li>
                         </ul>
                     </li>
-                    <li ng-if="menuCheck(137)"><a class="add" ng-click="add(1,treeFlat)"><i class="ALiconfont icon-plus1"></i> 添加校区</a></li>
+                    <li ng-if="menuCheck(137)"><a class="add" ng-click="show(1,treeFlat)"><i class="ALiconfont icon-plus1"></i> 添加校区</a></li>
                 </ul>
             </li>
         </ul>

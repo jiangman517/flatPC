@@ -33,13 +33,9 @@ angular.module('flatpcApp')
             return false;
         }
     };
-    $scope.show = function(status,type,item,college,campus,liveArea){
+    $scope.add = function(type,item,college,campus,liveArea){
         $scope.media.status = status;
-        if(type>0){
-            $scope.media.type=type;
-        }else{
-             $scope.media.type = 1;
-        }
+        $scope.media.type=type;
         $scope.media.title = college || item.title || '';
         
         $scope.media.campusTitle = campus || item.title || '';
@@ -54,7 +50,7 @@ angular.module('flatpcApp')
         $scope.media.listOrder=item.listOrder || 1;
     }
     
-    $scope.add = function(type,item,campus){
+    $scope.show = function(type,item,campus){
         $scope.media.status = 1;
         $scope.media.type = type;
         
