@@ -386,6 +386,7 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                             if(data.code == 0){
                                 that.room = data.data;
                                 that.getSum(true);
+                                that.getBedData();
                             }else if(data.code == 4037){
                             swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                             location.href="#login";$rootScope.loading = false;
@@ -400,6 +401,7 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                         {
                             that.room = $rootScope.treeWeek[0].typeList[0].itemList;
                             that.getSum(true);
+                            that.getBedData();
                             //$rootScope.treeWeek[0].tableId;
                             //$rootScope.treeWeek[0].typeList[0].typeId;
                         }    
@@ -411,55 +413,7 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                     }
                     break;
                 case 2:
-                    $rootScope.loading = true;
-                    return GradeService.getBedGrade({
-                        token:AppConfig.token,
-                        roomid:this.item.roomId,
-                        semesterid:$rootScope.treeTerm[$scope.media.yearIndex].semesterList[$scope.media.termIndex].semesterId,
-                        currentweek:$scope.media.week,
-                        type:0
-                    }).success(function (data) {
-                        $rootScope.loading = false;
-                        if(data.code == 0){
-                            that.bed = data.data;
-                            that.bedScoreId = 1;
-                            if(data.data.length>0 && $scope.media.tab==1){
-                                that.bed.forEach(function (bed) {
-                                    if(bed.itemList.length < 1){
-                                        that.bedScoreId = 0;
-                                        bed.itemList = [];
-                                        bed.totalScore = 0;
-                                        var options = [];
-                                        if($rootScope.treeWeek[0] && $rootScope.treeWeek[0].typeList && $rootScope.treeWeek[0].typeList[0].itemList)
-                                        {
-                                            options = $rootScope.treeWeek[0].typeList[1].itemList;
-                                            //$rootScope.treeWeek[0].tableId;
-                                            //$rootScope.treeWeek[0].typeList[1].typeId;
-                                        }    
-                                        else
-                                            options = [];
-                                        //console.log(options);
-                                        options.forEach(function (item) {
-                                            //console.log(item);
-                                                bed.itemList.push({
-                                                    itemId:item.itemId,
-                                                    title:item.title,
-                                                    standardType:item.standardType,
-                                                    maxScore:item.standardType?-1:item.fullMark,
-                                                    score:item.standardType?-1:item.fullMark
-                                                })
-                                        })
-                                    }
-                                })
-                            }
-                        }else if(data.code == 4037){
-                            swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
-                            location.href="#login";$rootScope.loading = false;
-                        }
-                        else
-                            swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
-                        ////console.log(data);
-                    });
+                    this.getBedData();
                 case 3:
                     $rootScope.loading = true;
                     //console.log(this.item);
@@ -504,6 +458,59 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                     });
             }
             return null;
+        },
+        getBedData:function(){
+            var that = this;
+            $rootScope.loading = true;
+            return GradeService.getBedGrade({
+                token:AppConfig.token,
+                roomid:this.item.roomId,
+                semesterid:$rootScope.treeTerm[$scope.media.yearIndex].semesterList[$scope.media.termIndex].semesterId,
+                currentweek:$scope.media.week,
+                type:0
+            }).success(function (data) {
+                $rootScope.loading = false;
+                if(data.code == 0){
+                    that.bed = data.data;
+                    that.bedScoreId = 1;
+                    if(data.data.length>0 && $scope.media.tab==1){
+                        that.bed.forEach(function (bed) {
+                            if(bed.itemList.length < 1){
+                                that.bedScoreId = 0;
+                                bed.itemList = [];
+                                bed.totalScore = 0;
+                                var options = [];
+                                if($rootScope.treeWeek[0] && $rootScope.treeWeek[0].typeList && $rootScope.treeWeek[0].typeList[0].itemList)
+                                {
+                                    options = $rootScope.treeWeek[0].typeList[1].itemList;
+                                    //$rootScope.treeWeek[0].tableId;
+                                    //$rootScope.treeWeek[0].typeList[1].typeId;
+                                }    
+                                else
+                                    options = [];
+                                //console.log(options);
+                                options.forEach(function (item) {
+                                    //console.log(item);
+                                        bed.itemList.push({
+                                            itemId:item.itemId,
+                                            title:item.title,
+                                            standardType:item.standardType,
+                                            maxScore:item.standardType?-1:item.fullMark,
+                                            score:item.standardType?-1:item.fullMark
+                                        })
+                                })
+                            }
+                        })
+                    }
+                }else if(data.code == 4037){
+                    swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+                    location.href="#login";$rootScope.loading = false;
+                }
+                else
+                    swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
+                ////console.log(data);
+            });
+
         },
         getSum:function(reset) {
             try{
