@@ -414,7 +414,7 @@
                                         <tbody ng-repeat="bed in cardMedia.bed">
                                             <tr><th>{{bed.bedName || bed.bedNum}}</th><th> -{{bed.studentName + '（' + bed.studentNumber + '）'}}</th><th class="grade-number">{{cardMedia.getBedSum(bed)}}</th></tr>
                                             <tr ng-repeat="item in bed.itemList">
-                                                <td>{{item.number || ($index + 1)}}</td><td>{{item.title + (item.standardType?'':('（' + item.maxScore||0 + '）'))}}</td>
+                                                <td>{{item.number || ($index + 1)}}</td><td>{{item.title + (item.standardType?'':('（' + (item.maxScore||0) + '）'))}}</td>
                                                 <td class="grade-handle">
                                                     <div>
                                                         <div ng-if="item.score>-1" ng-click="cardMedia.grade(-1,item)"><i class="ALiconfont icon-minus3"></i></div>
