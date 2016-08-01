@@ -407,6 +407,21 @@ angular.module('flatpcApp')
                    return ['report','quiltreserve','quiltse'];
                 else
                     return null;
+            case 'entrycount':
+                if(menuCheck(426))
+                    return ['entry','entry','entrycount'];
+                else
+                    return null;
+            case 'abnormalcount':
+                if(menuCheck(427))
+                    return ['entry','entry','abnormalcount'];
+                else
+                    return null;
+            case 'entryset':
+                if(menuCheck(429))
+                    return ['entry','entry','entryset'];
+                else
+                    return null;
              case 'newstudentdiv':
                 if(menuCheck(408))
                      return ['flat','flat','newstudentdiv'];

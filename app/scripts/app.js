@@ -1267,6 +1267,57 @@ angular
             }
         }
     })
+    .state('entrycount', {
+        url: "/entrycount",
+        views: {
+            "": {
+                templateUrl: 'views/entry/entrycount.html',
+                controller: 'entrycountCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('abnormalcount', {
+        url: "/abnormalcount",
+        views: {
+            "": {
+                templateUrl: 'views/entry/abnormalcount.html',
+                controller: 'abnormalcountCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('entryset', {
+        url: "/entryset",
+        views: {
+            "": {
+                templateUrl: 'views/entry/entryset.html',
+                controller: 'entrysetCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
     .state('newstudentdiv', {
         url: "/newstudentdiv",
         views: {
