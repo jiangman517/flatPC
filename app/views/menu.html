@@ -432,6 +432,18 @@
         </ul>
     </li>
 
+    <li ng-if="menuCheck(438)" ng-show="sysMenu[1]=='preset'">
+        <div class="menu-title">设置</div>
+        <ul class="menu-list">
+            <li ng-if="menuCheck(439)">
+                <a href="#basicset">
+                    <i class="ALiconfont icon-set" style="background-color:#02cf97;font-size:25px"></i>
+                   基础设置
+                </a>
+            </li>          
+        </ul>
+    </li>
+
 
     <li ng-if="menuCheck(425)" ng-show="sysMenu[1]=='entry'">
         <div class="menu-title">统计管理</div>

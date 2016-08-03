@@ -402,6 +402,11 @@ angular.module('flatpcApp')
                     return ['report','package','packageset'];
                 else
                     return null;
+            case 'basicset':
+                if(menuCheck(439))
+                    return ['report','preset','basicset'];
+                else
+                    return null;
             case 'quiltse':
                 if(menuCheck(402))
                    return ['report','quiltreserve','quiltse'];

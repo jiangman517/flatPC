@@ -1250,6 +1250,23 @@ angular
             }
         }
     })
+    .state('basicset', {
+        url: "/basicset",
+        views: {
+            "": {
+                templateUrl: 'views/collect/basicset.html',
+                controller: 'basicsetCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
     .state('quiltse', {
         url: "/quiltse",
         views: {
