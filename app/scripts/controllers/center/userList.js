@@ -14,7 +14,7 @@ angular.module('flatpcApp')
         '数据中心','用户中心','用户列表'
     ];
     //跳转到什么地方去
-    $scope.parent = "data";
+    $scope.parent = "center";
     $rootScope.loading = false;
     var a = document.createElement('a');
     a.href =AppConfig.UCENTER+"/index.php?m=Admin&c=Index&a=index&schoolcode="+AppConfig.schoolCode+"&token="+AppConfig.token;

@@ -14,7 +14,7 @@ angular.module('flatpcApp')
         '用户中心','认证方式'
     ];
     //跳转到什么地方去
-    $scope.parent = "data";
+    $scope.parent = "center";
     $rootScope.loading = false;
     var a = document.createElement('a');
     a.href =AppConfig.UCENTER+"/index.php?m=Admin&c=Index&a=config&schoolcode="+AppConfig.schoolCode+"&token="+AppConfig.token;

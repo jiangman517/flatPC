@@ -7,7 +7,7 @@ angular.module('flatpcApp')
         '数据中心','师生信息','住宿信息'
     ];
     //跳转到什么地方去
-    $scope.parent = "data";
+    $scope.parent = "center";
     $scope.loaded = function(){
         $rootScope.loading = false;
         $scope.$apply();
