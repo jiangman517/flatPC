@@ -127,7 +127,7 @@ function($scope,AppConfig,$rootScope,RuleService,GradeService) {
             if(data.code == 0){
                 swal("提示","保存成功！", "success"); 
                 sessionStorage.role = $scope.media.role?0:1;
-                
+                document.cookie = "role="+sessionStorage.role;
                 AppConfig.role = $scope.media.role?0:1;
             }
             else
