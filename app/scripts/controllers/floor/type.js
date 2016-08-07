@@ -148,7 +148,7 @@ function($scope,AppConfig,$rootScope,RoomService,PublicService) {
         
     }
     $rootScope.loading = false;
-    if(!$rootScope.treeType)
+    if(!$rootScope.treeType || $rootScope.treeType.length==0)
         refresh().then(function(){
             if($rootScope.treeType[0]) $scope.show($rootScope.treeType[0]);
             else $scope.media.status = 1;

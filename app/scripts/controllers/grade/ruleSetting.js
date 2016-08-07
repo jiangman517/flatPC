@@ -124,11 +124,13 @@ function($scope,AppConfig,$rootScope,RuleService,GradeService) {
             check:AppConfig.check?0:1,
             role:$scope.media.role?0:1
         }).success(function (data) {
+            $rootScope.loading = false;
             if(data.code == 0){
                 swal("提示","保存成功！", "success"); 
                 sessionStorage.role = $scope.media.role?0:1;
                 document.cookie = "role="+sessionStorage.role;
                 AppConfig.role = $scope.media.role?0:1;
+                refresh();
             }
             else
                 swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
