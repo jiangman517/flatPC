@@ -179,6 +179,27 @@ angular.module('flatpcApp')
                     return ['flat','flatManager','counselor'];
                 else
                     return null;
+
+            case 'dormitoryWeek':
+                if(menuCheck(442))
+                    return ['flat','dormitoryCheck','dormitoryWeek'];
+                else
+                    return null;
+             case 'dormitoryMonth':
+                if(menuCheck(443))
+                    return ['flat','dormitoryCheck','dormitoryMonth'];
+                else
+                    return null;
+             case 'dormitoryRandom':
+                if(menuCheck(444))
+                    return ['flat','dormitoryCheck','dormitoryRandom'];
+                else
+                    return null;
+             case 'dormitoryMarkSet':
+                if(menuCheck(444))
+                    return ['flat','dormitoryCheck','dormitoryMarkSet'];
+                else
+                    return null;
             case 'scoreStatistics':
                 if(menuCheck(301))
                     return ['flat','grade','scoreStatistics'];

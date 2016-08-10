@@ -652,6 +652,74 @@ angular
             }
         }
     })
+    .state('dormitoryWeek', {
+        url: "/dormitoryWeek",
+        views: {
+            "": {
+                templateUrl: 'views/dormitory/dormitoryWeek.html',
+                controller: 'dormitoryWeekCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('dormitoryMonth', {
+        url: "/dormitoryMonth",
+        views: {
+            "": {
+                templateUrl: 'views/dormitory/dormitoryMonth.html',
+                controller: 'dormitoryMonthCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('dormitoryRandom', {
+        url: "/dormitoryRandom",
+        views: {
+            "": {
+                templateUrl: 'views/dormitory/dormitoryRandom.html',
+                controller: 'dormitoryRandomCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('dormitoryMarkSet', {
+        url: "/dormitoryMarkSet",
+        views: {
+            "": {
+                templateUrl: 'views/dormitory/dormitoryMarkSet.html',
+                controller: 'dormitoryMarkSetCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
     .state('floor', {
         url: "/floor",
         views: {
