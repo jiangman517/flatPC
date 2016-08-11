@@ -132,9 +132,20 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
                     }else if($scope.media.floor.floortype != $scope.sex && "混住" !=$scope.sex){
                      swal("提示","与当前楼栋性别不符合","error"); 
                     }else if(data.code == 0){
-                        swal("提示", "添加成功！", "success");
-                        if(fun && typeof fun == 'function') fun();
+                        //swal("提示", "添加成功！", "success");
+					swal({
+						title: "提示",   
+						text: "添加成功",
+						type: "success",
+						showCancelButton: false,
+						closeOnConfirm: true,
+						showLoaderOnConfirm: false,
+					}, 
+					function(fun){ 
+						if(fun && typeof fun == 'function') fun();
                          refresh($scope.media.flatid);
+						$('#floorAdd').removeClass('show'); //方法三
+					});
                     }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
@@ -163,9 +174,22 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
                 }else if($scope.media.floor.floortype != $scope.sex && "混住" !=$scope.sex){
                      swal("提示","与当前楼栋性别不符合","error"); 
                 }else if(data.code == 0){
-                    swal("提示", "修改成功！", "success");
-                    if(fun && typeof fun == 'function') fun();
-                         refresh($scope.media.flatid);
+                    //swal("提示", "修改成功！", "success");
+                    swal({
+						title: "提示",   
+						text: "修改成功",
+						type: "success",
+						showCancelButton: false,
+						closeOnConfirm: true,
+						showLoaderOnConfirm: false,
+					}, 
+					function(fun){ 
+						if(fun && typeof fun == 'function') fun();
+                        refresh($scope.media.flatid);
+						$('#floorAdd').removeClass('show');
+					});
+
+                         
                 }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
@@ -305,9 +329,21 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
                 }else if($scope.media.room.roomstyle != $scope.sex && "混住" !=$scope.sex){
                      swal("提示","与当前楼栋性别不符合","error"); 
                 }else if(data.code == 0){
-                    swal("提示", "修改成功！", "success"); 
-                    if(fun && typeof fun == 'function') fun();
+
+                    //swal("提示", "修改成功！", "success"); 
+                    swal({
+						title: "提示",   
+						text: "修改成功",
+						type: "success",
+						showCancelButton: false,
+						closeOnConfirm: true,
+						showLoaderOnConfirm: false,
+					}, 
+					function(fun){ 
+						if(fun && typeof fun == 'function') fun();
                          refresh($scope.media.flatid);
+						$('#roomEdit').removeClass('show');
+					});
                 }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
