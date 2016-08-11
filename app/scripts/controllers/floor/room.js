@@ -144,7 +144,7 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
 					function(fun){ 
 						if(fun && typeof fun == 'function') fun();
                          refresh($scope.media.flatid);
-						$('#floorAdd').removeClass('show'); //方法三
+						$('#floorAdd').removeClass('show');
 					});
                     }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 

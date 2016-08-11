@@ -92,8 +92,19 @@ angular.module('flatpcApp')
         }).success(function (data) {
             $rootScope.loading = false;
             if(data.code == 0){
-                swal("提示", "添加成功！", "success"); 
-                refresh();
+                //swal("提示", "添加成功！", "success"); 
+                swal({
+						title: "提示",   
+						text: "添加成功！",
+						type: "success",
+						showCancelButton: false,
+						closeOnConfirm: true,
+						showLoaderOnConfirm: false,
+					}, 
+					function(){ 
+						refresh();
+						$('#roleAdd').removeClass('show');
+					});
             }else if($scope.role.title ==null&&data.code!= 4037){
                     swal("提示","含有非法字符","error"); 
             }else if(data.code == 4037){
@@ -115,8 +126,19 @@ angular.module('flatpcApp')
         }).success(function (data) {
             $rootScope.loading = false;
             if(data.code == 0){
-                swal("提示", "修改成功！", "success"); 
-                refresh();
+                //swal("提示", "修改成功！", "success"); 
+                swal({
+						title: "提示",   
+						text: "修改成功！",
+						type: "success",
+						showCancelButton: false,
+						closeOnConfirm: true,
+						showLoaderOnConfirm: false,
+					}, 
+					function(){ 
+						refresh();
+						$('#roleAdd').removeClass('show');
+					});
             }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
@@ -144,8 +166,19 @@ angular.module('flatpcApp')
             }).success(function (data) {
                 $rootScope.loading = false;
                 if(data.code == 0){
-                    swal("提示", "删除成功！", "success"); 
-                    refresh();
+                    //swal("提示", "删除成功！", "success"); 
+                    swal({
+						title: "提示",   
+						text: "删除成功！",
+						type: "success",
+						showCancelButton: false,
+						closeOnConfirm: true,
+						showLoaderOnConfirm: false,
+					}, 
+					function(){ 
+						refresh();
+						$('#roleAdd').removeClass('show');
+					});
                 }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
@@ -234,8 +267,19 @@ angular.module('flatpcApp')
         }).success(function(data){
             $rootScope.loading = false;
             if(data.code == 0){
-                 swal("提示","保存成功！", "success"); 
-                 refresh();
+                 //swal("提示","保存成功！", "success"); 
+                 swal({
+						title: "提示",   
+						text: "保存成功！",
+						type: "success",
+						showCancelButton: false,
+						closeOnConfirm: true,
+						showLoaderOnConfirm: false,
+					}, 
+					function(){ 
+						refresh();
+						$('#menuSetting').removeClass('show');
+					});
                  if($scope.role.roleid == AppConfig.roleId){
                      sessionStorage.nodeIds = nodeids;
                      AppConfig.nodeIds = ',' + sessionStorage.nodeIds + ',';
