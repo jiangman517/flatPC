@@ -473,19 +473,19 @@
                         <tr>
                             <td class="require" width="200">开启寝室实拍</td>
                             <td>
-                                <input bs-switch ng-model="media.photo" type="checkbox" switch-size="mini" switch-on-text="开" switch-off-text="关">
+                                <input bs-switch ng-model="media.photo" type="checkbox" switch-size="mini" switch-on-text="开" switch-off-text="关" ng-change="switchChangeEvent(media.photo, null, null)">
                             </td>
                         </tr>
                         <tr>
                             <td class="require" width="200">是否必拍</td>
                             <td>
-                                <input bs-switch ng-model="media.takephoto" type="checkbox" switch-size="mini" switch-on-text="是" switch-off-text="否">
+                                <input bs-switch ng-model="media.takephoto" type="checkbox" switch-size="mini" switch-on-text="是" switch-off-text="否" ng-change="switchChangeEvent(null, media.takephoto, null)">
                             </td>
                         </tr>
                         <tr>
                             <td class="require" width="200">违规必拍</td>
                             <td>
-                                <input bs-switch ng-model="media.wgphoto" type="checkbox" switch-size="mini" switch-on-text="是" switch-off-text="否">
+                                <input bs-switch ng-model="media.wgphoto" type="checkbox" switch-size="mini" switch-on-text="是" switch-off-text="否" ng-change="switchChangeEvent(null, null, media.wgphoto)">
                             </td>
                         </tr>
                         <tr>

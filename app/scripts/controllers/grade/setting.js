@@ -28,6 +28,14 @@ function($scope,AppConfig,$rootScope,GradeService) {
        
     };
     console.log(AppConfig);
+	$scope.switchChangeEvent = function(photo, takephoto, wgphoto){
+		if(null!=photo && false==photo){ //关闭 “开启寝室实拍”
+			$scope.media.takephoto = false;
+			$scope.media.wgphoto = false;
+		}else if(true==takephoto || true==wgphoto){ //开启“是否必拍”、“违规必拍”
+			$scope.media.photo =true;
+		}
+	};
     $scope.basicSave = function(){
         $rootScope.loading = true;
         return GradeService.basicSetting({
