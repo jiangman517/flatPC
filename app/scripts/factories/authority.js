@@ -542,6 +542,7 @@ angular.module('flatpcApp')
         AppConfig.photo       = getCookie('photo') || 1;
         AppConfig.role        = getCookie('role') || 1;
         AppConfig.takephoto   = getCookie('takephoto') || 1;
+        AppConfig.wgphoto   = getCookie('wgphoto') || 1;
         AppConfig.check       = getCookie('check') || 1;
         /*AppConfig.adminId = sessionStorage.adminId;
         AppConfig.token = sessionStorage.token;
