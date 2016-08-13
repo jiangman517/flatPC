@@ -212,7 +212,61 @@ angular.module('flatpcApp')
         return CollegeService.getList(AppConfig.schoolCode).success(function(data){
             console.log(data);
             if(data.code == 0){
-                $rootScope.treeCollege = data.data;
+				if(null!=$rootScope.treeCollege){
+					//-------------添加或修改-------------------
+					for(var m=0; m<data.data.length; m++){
+						var data_child = data.data[m];
+						for(var n=0; n < $rootScope.treeCollege.length; n++){
+							var tree_child = $rootScope.treeCollege[n];
+							if(data_child.status == tree_child.status){
+								var add_college_array = [];
+								for(var i=0; i<data_child.collegeList.length; i++){
+									var exist_college = false;
+									for(var j=0; j < tree_child.collegeList.length; j++){
+										if(data_child.collegeList[i].collegeId == tree_child.collegeList[j].collegeId){
+											exist_college = true;
+											tree_child.collegeList[j].collegeName = data_child.collegeList[i].collegeName;  //更新已存在的学院名称
+											tree_child.collegeList[j].shortName = data_child.collegeList[i].shortName;      //更新已存在的学院简称
+											tree_child.collegeList[j].listOrder = data_child.collegeList[i].listOrder;      //更新已存在的学院排序
+											tree_child.collegeList[j].classList = data_child.collegeList[i].classList;      //更新已存在的班级节点
+											break;
+										}
+									}
+									if(false==exist_college){ //记录新增的学院
+										add_college_array[add_college_array.length] = data_child.collegeList[i];
+									}
+								}
+								//添加新的学院
+								for(var a=0; a<add_college_array.length; a++){
+									var nodeLength = tree_child.collegeList.length;
+									tree_child.collegeList[nodeLength] = add_college_array[a] ;
+								}
+							}
+						}
+					}
+					
+					//----------------------删除-------------------
+					for(var n=0; n < $rootScope.treeCollege.length; n++){
+						for(var m=0; m<data.data.length; m++){
+							if($rootScope.treeCollege[n].status == data.data[m].status){
+								for(var j=0; j < $rootScope.treeCollege[n].collegeList.length; j++){
+									var exist_college = false;
+									for(var i=0; i<data.data[m].collegeList.length; i++){
+										if(data.data[m].collegeList[i].collegeId == $rootScope.treeCollege[n].collegeList[j].collegeId){
+											exist_college = true;
+											break;
+										}
+									}
+									if(false==exist_college){
+										$rootScope.treeCollege[n].collegeList.splice(j,1);
+									}
+								}
+							}
+						}
+					}
+				}else{
+					$rootScope.treeCollege = data.data;
+				}
             }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
