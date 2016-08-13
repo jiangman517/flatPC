@@ -213,9 +213,146 @@ angular.module('flatpcApp')
     function refresh(){
         return FlatService.getList(AppConfig.schoolCode).success(function(data){
             //console.log(data);
-            if(data.code == 0)
-                $rootScope.treeFlat = data.data;
-            else if(data.code == 4037){
+            if(data.code == 0){
+                if(null!=$rootScope.treeFlat && $rootScope.treeFlat.cmpusList.length>0){
+                    //-------------添加或修改-------------------
+                    var add_cmpus_array = [];
+                    for(var i=0; i<data.data.cmpusList.length; i++){
+                        var exist_campus = false;
+                        var data_cmpus = data.data.cmpusList[i];
+                        for(var j=0; j<$rootScope.treeFlat.cmpusList.length; j++){
+                            var tree_cmpus = $rootScope.treeFlat.cmpusList[j];
+                            if(data_cmpus.campusId == tree_cmpus.campusId){
+                                exist_campus = true;
+                                tree_cmpus.title = data_cmpus.title;         //更新校区名称
+                                tree_cmpus.listOrder = data_cmpus.listOrder; //更新校区排序
+                                /*********************处理生活区 BEGIN***********************/
+                                if(tree_cmpus.liveAreaList && tree_cmpus.liveAreaList.length>0){
+                                    var add_area_array = [];
+                                    for(var m=0; m<data_cmpus.liveAreaList.length; m++){
+                                        var exist_area = false;
+                                        var data_area = data_cmpus.liveAreaList[m];
+                                        for(var n=0; n< tree_cmpus.liveAreaList.length; n++){
+                                            var tree_area = tree_cmpus.liveAreaList[n];
+                                            if(data_area.liveAreaId == tree_area.liveAreaId){
+                                                exist_area = true;
+                                                tree_area.title = data_area.title;         //更新生活区名称
+                                                tree_area.listOrder = data_area.listOrder; //更新生活区排序
+                                                /*********************处理楼栋 BEGIN***********************/
+                                                if(tree_area.flatList && tree_area.flatList.length>0){ //处理楼栋
+                                                    var add_flat_array = [];
+                                                    for(var k=0; k<data_area.flatList.length; k++){
+                                                        var exist_flat = false;
+                                                        var data_flat = data_area.flatList[k];
+                                                        for(var h=0; h< tree_area.flatList.length; h++){
+                                                            var tree_flat = tree_area.flatList[h];
+                                                            if(data_flat.flatId == tree_flat.flatId){
+                                                                exist_flat = true;
+                                                                tree_flat.title = data_flat.title;         //更新楼栋名称
+                                                                tree_flat.listOrder = data_flat.listOrder; //更新楼栋排序
+                                                                tree_flat.sex = data_flat.sex;             //更新楼栋性别
+                                                                break;
+                                                            }
+                                                        }
+                                                        if(false==exist_flat){ //记录新的楼栋
+                                                            add_flat_array[add_flat_array.length] = data_flat;
+                                                        }
+                                                    }
+                                                    //添加新的楼栋
+                                                    for(var a=0; a<add_flat_array.length; a++){
+                                                        var area_length = tree_area.flatList.length;
+                                                        tree_area.flatList[area_length] = add_flat_array[a] ;
+                                                    }
+                                                }else{
+                                                    tree_area.flatList = data_area.flatList;
+                                                }
+                                                /*********************处理楼栋 END***********************/
+                                                break;
+                                            }
+                                        }
+                                        if(false==exist_area){ //记录新的生活区
+                                            add_area_array[add_area_array.length] = data_area;
+                                        }
+                                    }
+                                    //添加新的生活区
+                                    for(var a=0; a<add_area_array.length; a++){
+                                        var area_length = tree_cmpus.liveAreaList.length;
+                                        tree_cmpus.liveAreaList[area_length] = add_area_array[a] ;
+                                    }
+                                }else{
+                                    tree_cmpus.liveAreaList = data_cmpus.liveAreaList;
+                                }
+                                /*********************处理生活区 END***********************/
+                                break;
+                            }
+                        }
+                        if(false == exist_campus){ //记录新增的校区
+                            add_cmpus_array[add_cmpus_array.length] = data_cmpus;
+                        }
+                    }
+                    //添加新的校区
+                    for(var a=0; a<add_cmpus_array.length; a++){
+                        var nodeLength = $rootScope.treeFlat.cmpusList.length;
+                        $rootScope.treeFlat.cmpusList[nodeLength] = add_cmpus_array[a] ;
+                    }
+
+                    //----------------------删除-------------------
+                    if($rootScope.treeFlat.cmpusList && $rootScope.treeFlat.cmpusList.length>0){
+                        for(var j=0; j<$rootScope.treeFlat.cmpusList.length; j++){
+                            var exist_campus = false; 
+                            var tree_cmpus = $rootScope.treeFlat.cmpusList[j];
+                            for(var i=0; i<data.data.cmpusList.length; i++){
+                                var data_cmpus = data.data.cmpusList[i];
+                                if(data_cmpus.campusId == tree_cmpus.campusId){
+                                    exist_campus = true;
+                                    /*********************处理生活区 BEGIN***********************/
+                                    if(tree_cmpus.liveAreaList && tree_cmpus.liveAreaList.length>0){ //处理楼栋
+                                        for(var n=0; n<tree_cmpus.liveAreaList.length; n++){
+                                            var exist_area = false; 
+                                            var tree_area = tree_cmpus.liveAreaList[n];
+                                            for(var m=0; m<data_cmpus.liveAreaList.length; m++){
+                                                var data_area = data_cmpus.liveAreaList[m];
+                                                if(data_area.liveAreaId == tree_area.liveAreaId){
+                                                    exist_area = true;
+                                                    /*********************处理楼栋 BEGIN***********************/
+                                                    if(tree_area.flatList && tree_area.flatList.length>0){ //处理楼栋
+                                                        for(var h=0; h<tree_area.flatList.length; h++){
+                                                            var exist_flat = false; 
+                                                            var tree_flat = tree_area.flatList[h];
+                                                            for(var k=0; k<data_area.flatList.length; k++){
+                                                                var data_flat = data_area.flatList[k];
+                                                                if(data_flat.flatId == tree_flat.flatId){
+                                                                    exist_flat = true;
+                                                                    break;
+                                                                }
+                                                            }
+                                                            if(false==exist_flat){ //移除楼栋
+                                                                tree_area.flatList.splice(h,1);
+                                                            }
+                                                        }
+                                                    }
+                                                    /*********************处理楼栋 END***********************/
+                                                    break;
+                                                }
+                                            }
+                                            if(false==exist_area){ //移除生活区
+                                                tree_cmpus.liveAreaList.splice(n,1);
+                                            }
+                                        }
+                                    }
+                                    /*********************处理生活区 END***********************/
+                                    break;
+                                }
+                            }
+                            if(false==exist_campus){ //移除校区
+                                $rootScope.treeFlat.cmpusList.splice(j,1);
+                            }
+                        }
+                    }
+                }else{
+                    $rootScope.treeFlat = data.data;
+                }
+            }else if(data.code == 4037){
                     swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
                     location.href="#login";$rootScope.loading = false;
                 }else
