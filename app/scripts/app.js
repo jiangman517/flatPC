@@ -754,6 +754,23 @@ angular
             }
         }
     })
+      .state('initialize', {
+        url: "/initialize",
+        views: {
+            "": {
+                templateUrl: 'views/floor/initialize.html',
+                controller: 'initializeCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
     .state('type', {
         url: "/type",
         views: {
@@ -1579,6 +1596,23 @@ angular
             "": {
                 templateUrl: 'views/exam/exampeople.html',
                 controller: 'exampeopleCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+       .state('newstudentdivschool', {
+        url: "/newstudentdivschool",
+        views: {
+            "": {
+                templateUrl: 'views/grade/newstudentdivschool.html',
+                controller: 'newstudentdivschoolcodeCtrls'
             },
             "aside": {
                 templateUrl: "views/aside.html",

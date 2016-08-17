@@ -88,6 +88,11 @@
             <i class="ALiconfont icon-set" style="font-size:20px"></i> 基础设置
         </a>
     </li>
+    <li ng-if="menuCheck(448)" ng-class="{'active':sysMenu[1]=='initialize'}" ng-click="switch('initialize')">
+        <a href="#initialize" title="初始化管理">
+            <i class="ALiconfont icon-tongbu" style="font-size:20px"></i> 初始化管理
+        </a>
+    </li>
 </ul>
 <ul ng-show="sysMenu[0]=='admin'">
     <li ng-if="menuCheck(13)" ng-class="{'active':sysMenu[1]=='admin'}" ng-click="switch('admin')">

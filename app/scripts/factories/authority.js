@@ -255,6 +255,11 @@ angular.module('flatpcApp')
                     return ['center','floor','room'];
                 else
                     return null;
+            case 'initialize':
+                if(menuCheck(448))
+                    return ['center','initialize','initialize'];
+                else
+                    return null;
             case 'type':
                 if(menuCheck(130))
                     return ['center','floor','type'];
@@ -456,6 +461,11 @@ angular.module('flatpcApp')
              case 'newstudentregister':
                 if(menuCheck(409))
                     return ['flat','flat','newstudentregister'];
+                else
+                    return null;
+             case 'newstudentdivschool':
+                if(menuCheck(447))
+                    return ['flat','flat','newstudentdivschool'];
                 else
                     return null;
              case 'newstudentIn':
