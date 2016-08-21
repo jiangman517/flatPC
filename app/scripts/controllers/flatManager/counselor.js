@@ -16,6 +16,7 @@ angular.module('flatpcApp')
         password:'',
         password1:'',
         useraccount:'',
+        flag:'',
         phone:'',
         jobnumber:'',
         roleid:'',
@@ -39,17 +40,23 @@ angular.module('flatpcApp')
             this.classes.push(cla);
         },
         getClass:function(){
-            var ids = [],check = function(id){
-                for(var i=0;i < ids.length;i++){
-                    if(id.length < 1 || ids[i] == id)return false;
-                }
-                return true;
-            };
-            this.classes.forEach(function (cla) {
-                if(check(cla.classId))
-                    ids.push(cla.classId);
-            })
-            ids = ids.length>0?ids.toString():"";
+            var ids = [];
+            if(this.classes && this.classes.length==1 && "0"==this.classes[0].classId){
+                $scope.form.flag = 1;
+            }else{
+                var check = function(id){
+                    for(var i=0;i < ids.length;i++){
+                        if(id.length < 1 || ids[i] == id)return false;
+                    }
+                    return true;
+                };
+                this.classes.forEach(function (cla) {
+                    if(check(cla.classId))
+                        ids.push(cla.classId);
+                })
+                ids = ids.length>0?ids.toString():"";
+                $scope.form.flag = 0;
+            }
             return ids;
         }
     }
@@ -106,8 +113,11 @@ angular.module('flatpcApp')
     }
     $scope.addSave = function (fun) {
         var ids = $scope.form.getClass();
-        if($scope.form.password.length < 1 || $scope.form.username.length < 1 || $scope.form.jobnumber.length < 1 || $scope.form.phone.length < 1 || $scope.form.roleid.length < 1 || $scope.form.useraccount.length < 1 || ids.length < 1)return;
-        if($scope.form.password != $scope.form.password1){
+        if($scope.form.password.length < 1 || $scope.form.username.length < 1 || $scope.form.jobnumber.length < 1 || $scope.form.phone.length < 1 || $scope.form.roleid.length < 1 || $scope.form.useraccount.length < 1)return;
+        if($scope.form.flag==0 && ids.length < 1){
+            swal("提示", "请选择班级", "error"); 
+            return;
+        }else if($scope.form.password != $scope.form.password1){
             swal("提示", "两次密码输入不一致", "error"); 
             return;
         }
@@ -118,6 +128,7 @@ angular.module('flatpcApp')
             useraccount:$scope.form.useraccount,
             phone:$scope.form.phone,
             jobnumber:$scope.form.jobnumber,
+            flag: $scope.form.flag,
             classids:ids,
             roleid:$scope.form.roleid
         }).success(function (data) {

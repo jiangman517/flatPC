@@ -16,6 +16,7 @@ angular.module('flatpcApp')
         password:'',
         password1:'',
         useraccount:'',
+        flag:'',
         phone:'',
         jobnumber:'',
         roleid:'',
@@ -79,6 +80,7 @@ angular.module('flatpcApp')
     }
     //二级连选的select
     $scope.selecter = {
+        flag: 0 , // 0--正常；1--全部楼栋； 2--全部生活区
         campusSelecter : function(flat){
             //用campusId获取liveAreaList
             if(flat.campusId){
@@ -91,7 +93,16 @@ angular.module('flatpcApp')
         },
         liveAreaSelecter : function(flat){
             //用liveAreaId获取flatList
-            if(flat.liveAreaId){
+            if("0"==flat.liveAreaId){ //选择了全部生活区
+				$scope.selecter.flag = 2;
+				if(flat.liveAreaList){
+                    flat.flatList = [];
+                    for(var i=0; i<flat.liveAreaList.length; i++){
+                        flat.flatList = flat.flatList.concat(flat.liveAreaList[i].flatList);
+                    }
+				}
+			}else if(flat.liveAreaId){
+                if($scope.selecter.flag==2) $scope.selecter.flag =0;
                 flat.flatId = '';
                 var liveArea = flat.liveAreaId?$filter('filter')(flat.liveAreaList,{liveAreaId:flat.liveAreaId}):[];
                 flat.flatList = (liveArea.length>0 && liveArea[0].flatList)?liveArea[0].flatList : [];
@@ -99,36 +110,41 @@ angular.module('flatpcApp')
         },
         flatSelecter : function(flat){
             //用 flatId或liveAreaId 反向获取 campusId、liveAreaId、liveAreaList和flatList
-
-            for(var i=0;i < $rootScope.treeFlat.cmpusList.length;i++){
-                if($rootScope.treeFlat.cmpusList[i].liveAreaList && (flat.flatId || flat.liveAreaId))
-                    for(var j=0;j < $rootScope.treeFlat.cmpusList[i].liveAreaList.length;j++){
-                        if($rootScope.treeFlat.cmpusList[i].liveAreaList[j].flatList && flat.flatId)
-                            for(var k=0;k <$rootScope.treeFlat.cmpusList[i].liveAreaList[j].flatList.length;k++){
-                                if($rootScope.treeFlat.cmpusList[i].liveAreaList[j].flatList[k].flatId == flat.flatId){
-                                    flat.campusId = $rootScope.treeFlat.cmpusList[i].campusId;
-                                    flat.liveAreaList = $rootScope.treeFlat.cmpusList[i].liveAreaList;
-                                    flat.liveAreaId = $rootScope.treeFlat.cmpusList[i].liveAreaList[j].liveAreaId;
-                                    flat.flatList= $rootScope.treeFlat.cmpusList[i].liveAreaList[j].flatList;
-                                    return;
+            if("0"==flat.flatId){ //选择了全部楼栋
+				$scope.selecter.flag = 1;
+			}else if(flat.flatId){
+                if($scope.selecter.flag==1) $scope.selecter.flag = 0;
+                for(var i=0;i < $rootScope.treeFlat.cmpusList.length;i++){
+                    if($rootScope.treeFlat.cmpusList[i].liveAreaList && (flat.flatId || flat.liveAreaId))
+                        for(var j=0;j < $rootScope.treeFlat.cmpusList[i].liveAreaList.length;j++){
+                            if($rootScope.treeFlat.cmpusList[i].liveAreaList[j].flatList && flat.flatId)
+                                for(var k=0;k <$rootScope.treeFlat.cmpusList[i].liveAreaList[j].flatList.length;k++){
+                                    if($rootScope.treeFlat.cmpusList[i].liveAreaList[j].flatList[k].flatId == flat.flatId){
+                                        flat.campusId = $rootScope.treeFlat.cmpusList[i].campusId;
+                                        flat.liveAreaList = $rootScope.treeFlat.cmpusList[i].liveAreaList;
+                                        flat.liveAreaId = $rootScope.treeFlat.cmpusList[i].liveAreaList[j].liveAreaId;
+                                        flat.flatList= $rootScope.treeFlat.cmpusList[i].liveAreaList[j].flatList;
+                                        return;
+                                    }
                                 }
+                            else if(flat.liveAreaId && flat.liveAreaId == $rootScope.treeFlat.cmpusList[i].liveAreaList[j].liveAreaId){
+                                flat.campusId = $rootScope.treeFlat.cmpusList[i].campusId;
+                                flat.liveAreaList = $rootScope.treeFlat.cmpusList[i].liveAreaList;
+                                flat.liveAreaId = $rootScope.treeFlat.cmpusList[i].liveAreaList[j].liveAreaId;
+                                flat.flatList= $rootScope.treeFlat.cmpusList[i].liveAreaList[j].flatList;
+                                return;
                             }
-                        else if(flat.liveAreaId && flat.liveAreaId == $rootScope.treeFlat.cmpusList[i].liveAreaList[j].liveAreaId){
-                            flat.campusId = $rootScope.treeFlat.cmpusList[i].campusId;
-                            flat.liveAreaList = $rootScope.treeFlat.cmpusList[i].liveAreaList;
-                            flat.liveAreaId = $rootScope.treeFlat.cmpusList[i].liveAreaList[j].liveAreaId;
-                            flat.flatList= $rootScope.treeFlat.cmpusList[i].liveAreaList[j].flatList;
-                            return;
                         }
-                    }
-                else if(flat.campusId && flat.campusId == $rootScope.treeFlat.cmpusList[i].campusId){
-                    flat.campusId = $rootScope.treeFlat.cmpusList[i].campusId;
-                    flat.liveAreaList = $rootScope.treeFlat.cmpusList[i].liveAreaList;
-                    flat.liveAreaId = '';
-                    flat.flatList= [];
-                    return;
-                }else return;
+                    else if(flat.campusId && flat.campusId == $rootScope.treeFlat.cmpusList[i].campusId){
+                        flat.campusId = $rootScope.treeFlat.cmpusList[i].campusId;
+                        flat.liveAreaList = $rootScope.treeFlat.cmpusList[i].liveAreaList;
+                        flat.liveAreaId = '';
+                        flat.flatList= [];
+                        return;
+                    }else return;
+                }
             }
+            
 
         }
     }
@@ -146,7 +162,8 @@ angular.module('flatpcApp')
             useraccount:$scope.form.useraccount,
             phone:$scope.form.phone,
             jobnumber:$scope.form.jobnumber,
-            flatids:ids,
+            flatids: $scope.selecter.flag>0? null: ids,
+            flag: $scope.selecter.flag,
             roleid:$scope.form.roleid
         }).success(function (data) {
             $rootScope.loading = false;
