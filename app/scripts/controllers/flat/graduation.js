@@ -66,44 +66,36 @@ function($scope,AppConfig,$rootScope,FlatService,GraduationService,$filter,Colle
         
         switch(type){
             case -1:
-             $scope.selecter.campusId = "";
-                $scope.selecter.liveAreaId = "";
-                $scope.selecter.flatId = "";
+                $scope.media.campusId = "";
+                $scope.media.liveAreaId = "";
+                $scope.media.flatId = "";
                 
-                $scope.selecter.collegeId = "";
-                $scope.selecter.classId = "";
+                $scope.media.collegeId = "";
+                $scope.media.classId = "";
                 break;
             case 0:
-                $scope.selecter.campusId = "";
-                $scope.selecter.liveAreaId = "";
-                $scope.selecter.flatId = "";
+                $scope.media.campusId = "";
+                $scope.media.liveAreaId = "";
+                $scope.media.flatId = "";
                 
-                $scope.selecter.collegeId = "";
-                $scope.selecter.classId = "";
+                $scope.media.collegeId = "";
+                $scope.media.classId = "";
                 break;
             case 1:
-                $scope.selecter.campusId = item.campusId || "";
-                $scope.selecter.liveAreaId = "";
-                $scope.selecter.flatId = "";
-                
-                $scope.selecter.collegeId = item.collegeId || "";
-                $scope.selecter.classId = "";
+                $scope.media.collegeId = item.collegeId || "";
+                $scope.media.classId = "";
                 break;
             case 2:
-                $scope.selecter.campusId = campus.campusId || "";
-                $scope.selecter.liveAreaId = item.liveAreaId || "";
-                $scope.selecter.flatId = "";
-                
-                $scope.selecter.collegeId = campus.collegeId || "";
-                $scope.selecter.classId = item.classId || "";
+                $scope.media.collegeId = campus.collegeId || "";
+                $scope.media.classId = item.classId || "";
                 break;
             case 3:
-                $scope.selecter.campusId = campus.campusId || "";
-                $scope.selecter.liveAreaId = liveArea.liveAreaId || "";
-                $scope.selecter.flatId = item.flatId || "";
+                $scope.media.campusId = campus.campusId || "";
+                $scope.media.liveAreaId = liveArea.liveAreaId || "";
+                $scope.media.flatId = item.flatId || "";
                 
-                $scope.selecter.collegeId = "";
-                $scope.selecter.classId = "";
+                $scope.media.collegeId = "";
+                $scope.media.classId = "";
                 break;
         }
         
