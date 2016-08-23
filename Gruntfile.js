@@ -1,36 +1,39 @@
+// Generated on 2016-01-04 using generator-angular 0.14.0
 // 生在2016年01月04日的项目
 'use strict';
-
+// # Globbing
+// for performance reasons we're only matching one level down:
 // #通配符
 // 性能的原因我们只匹配的下一级：
 // 'test/spec/{,*/}*.js'
+// use this if you want to recursively match all subfolders:
 // / /使用这个如果你想匹配的所有子文件夹递归：
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
-
+  // Time how long tasks take. Can help when optimizing build times
   //时间多久任务带。可以帮助优化时，创建时间
   require('time-grunt')(grunt);
-
+// Automatically load required Grunt tasks
   // 自动加载所需的繁重的任务
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn'
   });
-
+// Configurable paths for the application
   // 配置的应用路径
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
-
+// Define the configuration for all the tasks
   // 定义的配置为所有的任务
   grunt.initConfig({
-
+    // Project settings 
     // 项目设置
     yeoman: appConfig,
-
+    // Watches files for changes and runs tasks based on the changed files
     // 表文件的变化和运行任务的基础上更改的文件
     watch: {
       bower: {
@@ -66,11 +69,12 @@ module.exports = function (grunt) {
         ]
       }
     },
-
+// The actual grunt server settings
     // 服务器的实际参数
     connect: {
       options: {
         port: 9020,
+        // Change this to '0.0.0.0' to access the server from outside.
         // 更改为“0.0.0.0”从外部访问的服务器。
         hostname: 'localhost',
         livereload: 35730
@@ -117,7 +121,7 @@ module.exports = function (grunt) {
         }
       }
     },
-
+    // Make sure there are no obvious mistakes
     // 确保没有明显的错误
     jshint: {
       options: {
@@ -137,7 +141,7 @@ module.exports = function (grunt) {
         src: ['test/spec/{,*/}*.js']
       }
     },
-
+     // Make sure code styles are up to par
     // 确保代码风格
     jscs: {
       options: {
@@ -154,7 +158,7 @@ module.exports = function (grunt) {
         src: ['test/spec/{,*/}*.js']
       }
     },
-
+    // Empties folders to start fresh
     // 清空文件夹重新开始
     clean: {
       dist: {
@@ -195,7 +199,7 @@ module.exports = function (grunt) {
         }]
       }
     },
-
+    // Automatically inject Bower components into the app
     // 自动注入到应用程序组件Bower
     wiredep: {
       app: {
@@ -223,7 +227,7 @@ module.exports = function (grunt) {
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     }, 
-
+    // Compiles Sass to CSS and generates necessary files if requested
     // 编译SASS CSS和产生所需的文件，如果要求
     compass: {
       options: {
