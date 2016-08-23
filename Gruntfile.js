@@ -1,37 +1,37 @@
-// Generated on 2016-01-04 using generator-angular 0.14.0
+// 生在2016年01月04日的项目
 'use strict';
 
-// # Globbing
-// for performance reasons we're only matching one level down:
+// #通配符
+// 性能的原因我们只匹配的下一级：
 // 'test/spec/{,*/}*.js'
-// use this if you want to recursively match all subfolders:
+// / /使用这个如果你想匹配的所有子文件夹递归：
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
 
-  // Time how long tasks take. Can help when optimizing build times
+  //时间多久任务带。可以帮助优化时，创建时间
   require('time-grunt')(grunt);
 
-  // Automatically load required Grunt tasks
+  // 自动加载所需的繁重的任务
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn'
   });
 
-  // Configurable paths for the application
+  // 配置的应用路径
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
 
-  // Define the configuration for all the tasks
+  // 定义的配置为所有的任务
   grunt.initConfig({
 
-    // Project settings
+    // 项目设置
     yeoman: appConfig,
 
-    // Watches files for changes and runs tasks based on the changed files
+    // 表文件的变化和运行任务的基础上更改的文件
     watch: {
       bower: {
         files: ['bower.json'],
@@ -67,11 +67,11 @@ module.exports = function (grunt) {
       }
     },
 
-    // The actual grunt server settings
+    // 服务器的实际参数
     connect: {
       options: {
         port: 9020,
-        // Change this to '0.0.0.0' to access the server from outside.
+        // 更改为“0.0.0.0”从外部访问的服务器。
         hostname: 'localhost',
         livereload: 35730
       },
@@ -118,7 +118,7 @@ module.exports = function (grunt) {
       }
     },
 
-    // Make sure there are no obvious mistakes
+    // 确保没有明显的错误
     jshint: {
       options: {
         jshintrc: '.jshintrc',
@@ -138,7 +138,7 @@ module.exports = function (grunt) {
       }
     },
 
-    // Make sure code styles are up to par
+    // 确保代码风格
     jscs: {
       options: {
         config: '.jscsrc',
@@ -155,7 +155,7 @@ module.exports = function (grunt) {
       }
     },
 
-    // Empties folders to start fresh
+    // 清空文件夹重新开始
     clean: {
       dist: {
         files: [{
@@ -196,7 +196,7 @@ module.exports = function (grunt) {
       }
     },
 
-    // Automatically inject Bower components into the app
+    // 自动注入到应用程序组件Bower
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
@@ -224,7 +224,7 @@ module.exports = function (grunt) {
       }
     }, 
 
-    // Compiles Sass to CSS and generates necessary files if requested
+    // 编译SASS CSS和产生所需的文件，如果要求
     compass: {
       options: {
         sassDir: '<%= yeoman.app %>/styles',
@@ -254,6 +254,7 @@ module.exports = function (grunt) {
     },
 
     // Renames files for browser caching purposes
+    //重命名文件浏览器缓存的目的
     filerev: {
       dist: {
         src: [
@@ -268,6 +269,9 @@ module.exports = function (grunt) {
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
+    //读取HTML usemin块使智能建筑自动
+    //连接，缩小和修改文件。创建配置存储器
+    //额外的任务可以运行在他们
     useminPrepare: {
       html: '<%= yeoman.app %>/index.html',
       options: {
@@ -285,6 +289,7 @@ module.exports = function (grunt) {
     },
 
     // Performs rewrites based on filerev and the useminPrepare configuration
+    //执行重写基于filerev和useminprepare配置
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
@@ -305,6 +310,10 @@ module.exports = function (grunt) {
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
+    //以下*分钟的任务会产生压缩文件在dist文件夹
+    // By default, your `index.html`'s <!-- Usemin block --> will take care of
+    //缩小。接下来的选项是预先配置好的如果你不希望
+    //使用的usemin两块。
     // cssmin: {
     //   dist: {
     //     files: {
@@ -381,6 +390,8 @@ module.exports = function (grunt) {
 
     // ng-annotate tries to make the code safe for minification automatically
     // by using the Angular long form for dependency injection.
+    // ng注释使代码安全自动缩小
+    //使用依赖注入的角长。
     ngAnnotate: {
       dist: {
         files: [{
@@ -400,6 +411,7 @@ module.exports = function (grunt) {
     },
 
     // Copies remaining files to places other tasks can use
+    //剩余文件其他地方的任务就可以使用
     copy: {
       dist: {
         files: [{
@@ -434,6 +446,7 @@ module.exports = function (grunt) {
     },
 
     // Run some tasks in parallel to speed up the build process
+    //并行运行的任务，加快构建过程
     concurrent: {
       server: [
         'compass:server'
@@ -449,6 +462,7 @@ module.exports = function (grunt) {
     },
 
     // Test settings
+    //测试设置
     karma: {
       unit: {
         configFile: 'test/karma.conf.js',
