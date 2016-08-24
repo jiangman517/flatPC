@@ -18,6 +18,7 @@ angular.module('flatpcApp')
         useraccount:'',
         flag:'',
         phone:'',
+        collegeid:'',
         jobnumber:'',
         roleid:'',
         adminid:'',
@@ -87,6 +88,7 @@ angular.module('flatpcApp')
     $scope.selecter = {
         
         collegeSelecter : function(cla){
+            $scope.form.collegeid=cla.collegeId || '';
             //用collegeId获取classList
             cla.classId = '';
             var college = cla.collegeId?$filter('filter')($rootScope.treeCollege[0].collegeList,{collegeId:cla.collegeId}):[];
@@ -127,6 +129,7 @@ angular.module('flatpcApp')
             password:$scope.form.password,
             useraccount:$scope.form.useraccount,
             phone:$scope.form.phone,
+            collegeid:$scope.form.collegeid,
             jobnumber:$scope.form.jobnumber,
             flag: $scope.form.flag,
             classids:ids,
