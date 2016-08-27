@@ -453,6 +453,47 @@ angular.module('flatpcApp')
                     return ['entry','entry','entryset'];
                 else
                     return null;
+
+            case 'allview':
+                if(menuCheck(430))
+                    return ['entry','entry','allview'];
+                else
+                    return null;
+            case 'fastquery':
+                if(menuCheck(431))
+                    return ['entry','entry','fastquery'];
+                else
+                    return null;
+            case 'actionwarn':
+                if(menuCheck(450))
+                    return ['entry','daily','actionwarn'];
+                else
+                    return null;
+            case 'actionwarncustom':
+                if(menuCheck(451))
+                    return ['entry','daily','actionwarncustom'];
+                else
+                    return null;
+            case 'personalleave':
+                if(menuCheck(453))
+                    return ['entry','daily','personalleave'];
+                else
+                    return null;
+            case 'classleave':
+                if(menuCheck(454))
+                    return ['entry','daily','classleave'];
+                else
+                    return null;
+            case 'holidaymanage':
+                if(menuCheck(456))
+                    return ['entry','daily','holidaymanage'];
+                else
+                    return null;
+            case 'entryregister':
+                if(menuCheck(458))
+                    return ['entry','daily','entryregister'];
+                else
+                    return null;
              case 'newstudentdiv':
                 if(menuCheck(408))
                      return ['flat','flat','newstudentdiv'];

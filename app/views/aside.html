@@ -56,12 +56,12 @@
             <i class="ALiconfont icon-shangwuqu"></i> 统计管理
         </a>
     </li>
-    <!--<li ng-if="menuCheck(423)" ng-class="{'active':sysMenu[1]==''}" ng-click="switch('')">
-        <a href="#index" title="请假管理">
-            <i class="ALiconfont icon-xinyongfen" style="font-size:20px"></i> 请假管理
+    <li ng-if="menuCheck(423)" ng-class="{'active':sysMenu[1]=='daily'}" ng-click="switch('daily')">
+        <a href="#index" title="日常操作">
+            <i class="ALiconfont icon-xinyongfen" style="font-size:20px"></i> 日常操作
         </a>
     </li>
-    <li ng-if="menuCheck(424)" ng-class="{'active':sysMenu[1]=='1'}" ng-click="switch('1')">
+    <!--<li ng-if="menuCheck(424)" ng-class="{'active':sysMenu[1]=='1'}" ng-click="switch('1')">
         <a href="#index" title="设备管理">
             <i class="ALiconfont icon-order" style="font-size:20px"></i> 设备管理
         </a>

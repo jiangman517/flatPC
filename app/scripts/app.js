@@ -1420,6 +1420,142 @@ angular
             }
         }
     })
+    .state('allview', {
+        url: "/allview",
+        views: {
+            "": {
+                templateUrl: 'views/entry/allview.html',
+                controller: 'allviewCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('fastquery', {
+        url: "/fastquery",
+        views: {
+            "": {
+                templateUrl: 'views/entry/fastquery.html',
+                controller: 'fastqueryCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('actionwarn', {
+        url: "/actionwarn",
+        views: {
+            "": {
+                templateUrl: 'views/entry/actionwarn.html',
+                controller: 'actionwarnCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('actionwarncustom', {
+        url: "/actionwarncustom",
+        views: {
+            "": {
+                templateUrl: 'views/entry/actionwarncustom.html',
+                controller: 'actionwarncustomCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('personalleave', {
+        url: "/personalleave",
+        views: {
+            "": {
+                templateUrl: 'views/entry/personalleave.html',
+                controller: 'personalleaveCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    .state('classleave', {
+        url: "/classleave",
+        views: {
+            "": {
+                templateUrl: 'views/entry/classleave.html',
+                controller: 'classleaveCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
+    // .state('holidaymanage', {
+    //     url: "/holidaymanage",
+    //     views: {
+    //         "": {
+    //             templateUrl: 'views/entry/holidaymanage.html',
+    //             controller: 'holidaymanageCtrl'
+    //         },
+    //         "aside": {
+    //             templateUrl: "views/aside.html",
+    //             controller: 'AsideCtrl'
+    //         },
+    //         "header": {
+    //             templateUrl: "views/header.html",
+    //             controller: 'HeaderCtrl'
+    //         }
+    //     }
+    // })
+    .state('entryregister', {
+        url: "/entryregister",
+        views: {
+            "": {
+                templateUrl: 'views/entry/entryregister.html',
+                controller: 'entryregisterCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
     .state('newstudentdiv', {
         url: "/newstudentdiv",
         views: {
