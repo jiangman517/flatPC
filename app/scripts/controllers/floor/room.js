@@ -8,7 +8,6 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
             type:0,
             floorid:'',
             floorname:'',
-            listorder:0,
             typeid:"",
             floortype:"",
             memo:'',
@@ -20,10 +19,11 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
             type:0,
             roomid:'',
             roomname:'',
-            listorder:0,
+            startnum:'',
             status:0,
             roomstyle:'',
             typeid:'',
+            roomnum:'',
             memo:''
         }
     }
@@ -93,9 +93,13 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
                     token:AppConfig.token,
                     universityid:AppConfig.schoolCode,
                     flatid:$scope.media.flatid,
-                    listorder:$scope.media.floor.listorder,
+                    floornumber:$scope.media.floornumber,
+                    roomnumber:$scope.media.roomnumber,
                     typeid:$scope.media.floor.typeid,
-                    
+                    roomstyle:$scope.media.floor.roomstyle,
+                    startfloor:$scope.media.floor.startfloor,
+                    prefix:$scope.media.floor.prefix,
+                    suite:$scope.media.floor.suite,
                     floortype:$scope.media.floor.floortype,
                     floorname:$scope.media.floor.floorname,
                     memo:$scope.media.floor.memo
@@ -243,6 +247,7 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
             $scope.media.room.type = 0;
             $scope.media.room.roomid = '';
             $scope.media.room.roomname = '';
+            $scope.media.room.startnum = '';
             $scope.media.room.floornum = 0;
             $scope.media.room.listorder = 0;
             $scope.media.room.status = 0;
@@ -255,6 +260,7 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
             $scope.media.room.type = 1;
             $scope.media.room.roomid = room.roomId;
             $scope.media.room.roomname = room.roomName;
+            $scope.media.room.startnum = room.startnum;
             $scope.media.room.floornum = room.listOrder;
             $scope.media.room.listorder = room.listOrder;
             $scope.media.room.status = room.status;
@@ -274,7 +280,10 @@ function($scope,AppConfig,$rootScope,RoomService,FlatService,$filter) {
                 status:$scope.media.room.status,
                 roomstyle:$scope.media.room.roomstyle,
                 typeid:$scope.media.room.typeid,
-                roomname:$scope.media.room.roomname,
+                startnum:$scope.media.room.startnum,
+                roomnum:$scope.media.room.roomnum,
+                prefix:$scope.media.room.prefix,
+                suite:$scope.media.room.suite,
                 memo:$scope.media.room.memo
             };
             if($scope.media.room.listtype < 2){
