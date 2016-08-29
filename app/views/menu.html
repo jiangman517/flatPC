@@ -641,6 +641,12 @@
     <li ng-if="menuCheck(109)" ng-show="sysMenu[1]=='floor'">
         <div class="menu-title">楼栋信息</div>
         <ul class="menu-list">
+            <li ng-if="menuCheck(130)">
+                <a href="#type">
+                    <i class="ALiconfont icon-housetype" style="background-color:#38adff;font-size:30px"></i>
+                    户型管理
+                </a>
+            </li>
             <li ng-if="menuCheck(125)">
                 <a href="#floor">
                     <i class="ALiconfont icon-xiezilou" style="background-color:#ff9c00;font-size:32px"></i>
@@ -651,12 +657,6 @@
                 <a href="#room">
                     <i class="ALiconfont icon-key" style="background-color:#02cf97;font-size:25px"></i>
                     宿舍信息
-                </a>
-            </li>
-            <li ng-if="menuCheck(130)">
-                <a href="#type">
-                    <i class="ALiconfont icon-housetype" style="background-color:#38adff;font-size:30px"></i>
-                    户型管理
                 </a>
             </li>
         </ul>
