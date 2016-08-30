@@ -41,6 +41,14 @@ angular.module('flatpcApp')
                     a.href="/index.php?s=/addon/WechatWater/WechatWater/lists.html";
                     a.click();
                     break;
+                case 'mall':
+                    if(!$rootScope.menuCheck(459)){
+                        swal("提示","请联系客服电话0571-28256212 开通权限", "info"); 
+                        return;
+                    }
+                    a.href="/index.php?s=/addon/WechatMall/WechatMall/sc.html";
+                    a.click();
+                    break;
                 case 'flat':
                     if(!$rootScope.menuCheck(1)){
                         swal("提示","请联系客服电话0571-28256212 开通权限", "info"); 
@@ -199,6 +207,7 @@ angular.module('flatpcApp')
             repair:!new RegExp(",repair,").test(","+toggles+","),
             food:!new RegExp(",food,").test(","+toggles+","),
             water:!new RegExp(",water,").test(","+toggles+","),
+            mall:!new RegExp(",mall,").test(","+toggles+","),
             pay:!new RegExp(",pay,").test(","+toggles+","),
             center:!new RegExp(",center,").test(","+toggles+","),
             admin:!new RegExp(",admin,").test(","+toggles+","),
@@ -248,6 +257,7 @@ angular.module('flatpcApp')
             if(!$scope.media.repair)str += "repair,";
             if(!$scope.media.food)str += "food,";
             if(!$scope.media.water)str += "water,";
+            if(!$scope.media.mall)str += "mall,";
             if(!$scope.media.pay)str += "pay,";
             if(!$scope.media.center)str += "center,";
             if(!$scope.media.admin)str += "admin,";

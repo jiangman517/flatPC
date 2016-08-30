@@ -93,6 +93,7 @@ angular.module('flatpcApp')
             case 'repair':
             case 'food':
             case 'water':
+            case 'mall':
             case 'pay':
             
             case 'message':

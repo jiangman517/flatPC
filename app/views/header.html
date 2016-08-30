@@ -13,6 +13,7 @@
             <li ng-if="headerMenu(5)" data-toggle="pay" ng-class="{'active':sysMenu[0]=='pay'}"><a ng-click="headerSwitch(1,'pay')" target="page-tab">水电缴费</a></li>
             <li ng-if="headerMenu(317)" data-toggle="food" ng-class="{'active':sysMenu[0]=='food'}"><a ng-click="headerSwitch(1,'food')">订餐</a></li>
             <li ng-if="headerMenu(370)" data-toggle="water" ng-class="{'active':sysMenu[0]=='water'}"><a ng-click="headerSwitch(1,'water')" target="page-tab">订水</a></li>
+            <li ng-if="headerMenu(459)" data-toggle="mall" ng-class="{'active':sysMenu[0]=='mall'}"><a ng-click="headerSwitch(1,'mall')" >商城</a></li>
             <li ng-if="headerMenu(319)" data-toggle="message" ng-class="{'active':sysMenu[0]=='message'}"><a ng-click="headerSwitch(1,'message')">服务监督</a></li>
             <li ng-if="headerMenu(367)" data-toggle="order" ng-class="{'active':sysMenu[0]=='order'}"><a ng-click="headerSwitch(0,'order')" href="#order">浴室预定</a></li>
             <!--<li ng-if="headerMenu(367)" data-toggle="pay" ng-class="{'active':sysMenu[0]=='pay'}"><a ng-click="headerSwitch(1,'pay')" target="page-tab">浴室预定</a></li>-->
@@ -55,6 +56,7 @@
                 <li ng-if="headerMenu(5)" data-toggle="pay" ng-class="{'active':sysMenu[0]=='pay'}"><a ng-click="headerSwitch(1,'pay')" target="page-tab">水电缴费</a></li>
                 <li ng-if="headerMenu(317)" data-toggle="food" ng-class="{'active':sysMenu[0]=='food'}"><a ng-click="headerSwitch(1,'food')">订餐</a></li>
                 <li ng-if="headerMenu(370)" data-toggle="water" ng-class="{'active':sysMenu[0]=='water'}"><a ng-click="headerSwitch(1,'water')" target="page-tab">订水</a></li>
+                <li ng-if="headerMenu(459)" data-toggle="mall" ng-class="{'active':sysMenu[0]=='mall'}"><a ng-click="headerSwitch(1,'mall')" >商城</a></li>
                 <li ng-if="headerMenu(319)" data-toggle="message" ng-class="{'active':sysMenu[0]=='message'}"><a ng-click="headerSwitch(1,'message')">服务监督</a></li>
                 <li ng-if="headerMenu(367)" data-toggle="order" ng-class="{'active':sysMenu[0]=='order'}"><a ng-click="headerSwitch(0,'order')" href="#order">浴室预定</a></li>
                 <!--<li ng-if="headerMenu(367)" data-toggle="pay" ng-class="{'active':sysMenu[0]=='pay'}"><a ng-click="headerSwitch(1,'pay')" target="page-tab">浴室预定</a></li>-->
@@ -163,6 +165,14 @@
                                     订水
                                     <div style="float:right">
                                         <input bs-switch ng-change="toggleSave()" ng-model="media.water" type="checkbox" switch-size="mini"  switch-on-text="开" switch-off-text="关">
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-group-item b-l-primary">
+                                    商城
+                                    <div style="float:right">
+                                        <input bs-switch ng-change="toggleSave()" ng-model="media.mall" type="checkbox" switch-size="mini"  switch-on-text="开" switch-off-text="关">
                                     </div>
                                 </a>
                             </li>
