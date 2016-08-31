@@ -250,17 +250,12 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                     orderfield:this.orderfield,
                     ordertype:this.ordertype,
                     flatid:this.flatid1,
+                    date:new Date($scope.media.week.year + '-' + $scope.media.week.month + '-01').Format('yyyy-MM'),
                     semesterid:$rootScope.treeTerm[this.yearIndex].semesterList[this.termIndex].semesterId,
                     currentweek:this.week,
                     type:2
                 }).success(function (data) {
-                    $rootScope.loading = false;
-                    if(data.code == 0){
-                        location.href = data.data.fileUrl;
-                    }
-                    else
-                        swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
-                    ////console.log(data);
+                   
                 });
             }else if(this.tab == 3){
                 GradeService.downloadTopList({
@@ -272,18 +267,13 @@ function($scope,AppConfig,$rootScope,FlatService,TermService,$filter,GradeServic
                     orderfield:this.orderfield,
                     ordertype:this.ordertype,
                     flatid:this.flatid1,
+                    date:new Date($scope.media.week.year + '-' + $scope.media.week.month + '-01').Format('yyyy-MM'),
                     semesterid:$rootScope.treeTerm[this.yearIndex].semesterList[this.termIndex].semesterId,
                     currentweek:this.week,
                     tobed:this.tobed,
                     type:2
                 }).success(function (data) {
-                    $rootScope.loading = false;
-                    if(data.code == 0){
-                        location.href = data.data.fileUrl;
-                    }
-                    else
-                        swal("提示","错误代码："+ data.code + '，' + data.msg, "error"); 
-                    ////console.log(data);
+                    
                 });
             }
         }
