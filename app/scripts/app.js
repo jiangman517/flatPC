@@ -1522,23 +1522,23 @@ angular
             }
         }
     })
-    // .state('holidaymanage', {
-    //     url: "/holidaymanage",
-    //     views: {
-    //         "": {
-    //             templateUrl: 'views/entry/holidaymanage.html',
-    //             controller: 'holidaymanageCtrl'
-    //         },
-    //         "aside": {
-    //             templateUrl: "views/aside.html",
-    //             controller: 'AsideCtrl'
-    //         },
-    //         "header": {
-    //             templateUrl: "views/header.html",
-    //             controller: 'HeaderCtrl'
-    //         }
-    //     }
-    // })
+    .state('holidaymanage', {
+        url: "/holidaymanage",
+        views: {
+            "": {
+                templateUrl: 'views/entry/holidaymanage.html',
+                controller: 'holidaymanageCtrl'
+            },
+            "aside": {
+                templateUrl: "views/aside.html",
+                controller: 'AsideCtrl'
+            },
+            "header": {
+                templateUrl: "views/header.html",
+                controller: 'HeaderCtrl'
+            }
+        }
+    })
     .state('entryregister', {
         url: "/entryregister",
         views: {

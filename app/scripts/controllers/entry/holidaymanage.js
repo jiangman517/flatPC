@@ -13,7 +13,7 @@ angular.module('flatpcApp')
         $scope.$apply();
     }
     var a = document.createElement('a');
-    a.href = AppConfig.FRAME+"index.php?m=ExitManagement&c=Setting&a=index&token="+AppConfig.token+"&schoolcode="+AppConfig.schoolCode;
+    a.href = AppConfig.FRAME+"index.php?m=ExitManagement&c=Holiday&a=index&token="+AppConfig.token+"&schoolcode="+AppConfig.schoolCode;
     a.target="page-frame";
     a.click();
 }]);
