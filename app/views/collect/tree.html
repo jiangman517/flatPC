@@ -88,31 +88,33 @@
              <tr ng-show="media.type == 2">
                 <td class="require" width="200">学历</td>
                 <td>
-                    <select ng-model="media.degree"  ng-disabled="media.type == 2 && !media.menuCheck()">
+                    <select ng-model="media.degree"  ng-disabled="media.type == 2 && !media.menuCheck()" ng-change="degreeChangeEvent()">
                         <option value="">请选择学历</option>
                         <option value="专科">专科</option>
                         <option value="专升本">专升本</option>
                         <option value="本科">本科</option>
-                        <option value="本科">本科（一、二本）</option>
-                        <option value="本科">本科（三本）</option>
-                        <option value="本科">研究生</option>
+                        <option value="本科（一、二本）">本科（一、二本）</option>
+                        <option value="本科（三本）">本科（三本）</option>
+                        <option value="研究生">研究生</option>
                         <option value="硕士研究生">硕士研究生</option>
                         <option value="博士研究生">博士研究生</option>
+                        <option value="语言生">语言生</option>
+                        <option value="交换生">交换生</option>
                     </select>
-
                 </td>
             </tr>
             <tr ng-show="media.type == 2">
                 <td class="require" width="200">学年制</td>
                 <td>
-                    <select ng-model="media.degreeyear"  ng-disabled="media.type == 2 && !media.menuCheck()">
+                    <select ng-model="media.degreeyear">
                         <option value=""  selected="selected">请选择学年制</option>
-                        <option value="2" ng-selected="2 == media.degreeyear">二年制</option>
-                        <option value="3" ng-selected="3 == media.degreeyear">三年制</option>
-                        <option value="4" ng-selected="4 == media.degreeyear">四年制</option>
-                        <option value="5" ng-selected="5 == media.degreeyear">五年制</option>
-                        <option value="6" ng-selected="6 == media.degreeyear">六年制</option>
-                        <option value="7" ng-selected="7 == media.degreeyear">七年制</option>
+                        <option value="2" ng-selected="2==media.degreeyear">二年制</option>
+                        <option value="3" ng-selected="3==media.degreeyear">三年制</option>
+                        <option value="4" ng-selected="4==media.degreeyear">四年制</option>
+                        <option value="5" ng-selected="5==media.degreeyear">五年制</option>
+                        <option value="6" ng-selected="6==media.degreeyear">六年制</option>
+                        <option value="7" ng-selected="7==media.degreeyear">七年制</option>
+                        <option value="8" ng-selected="8==media.degreeyear">留学生</option>
                     </select>
                 </td>
             </tr>

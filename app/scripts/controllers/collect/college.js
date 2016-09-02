@@ -50,11 +50,37 @@ angular.module('flatpcApp')
         $scope.media.classId=item.classId || '';
         $scope.media.grade=item.grade || '';
         $scope.media.degree=item.degree || '';
-        $scope.media.degreeyear=item.degreeYear || '';
+        $scope.media.degreeyear=item.degreeYear+'' || '';
         $scope.media.history = item.history?true:false || false;
         $scope.media.listOrder=item.listOrder || 1;
     }
     
+    $scope.degreeChangeEvent = function () {
+        switch ($scope.media.degree){
+            case '专科':
+            case '研究生':
+            case '硕士研究生':
+                $scope.media.degreeyear = '3';
+                break;
+            case '专升本':
+            case '博士研究生':
+                $scope.media.degreeyear = '2';
+                break;
+            case '本科':
+            case '本科（一、二本）':
+            case '本科（三本）':
+                $scope.media.degreeyear = '4';
+                break;
+            case '语言生':
+            case '交换生':
+                $scope.media.degreeyear = '8';
+                break;
+            default:
+                $scope.media.degreeyear = '';
+                break;
+        }
+        return false;
+    }
     //添加班级和学院时清空缓存
     $scope.add = function(type,item){
         $scope.media.status = 1;
